@@ -13,7 +13,7 @@ public class PersonProfileController{
      @Autowired
     PersonProfileService ser;
    @PostMapping("/")
-   public PersonProfile createData(@RequestBody PersonProfile ss)
+   public PersonProfileService createData(@RequestBody PersonProfile ss)
    {
         return ser.createData(ss);
    }
