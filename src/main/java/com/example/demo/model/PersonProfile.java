@@ -3,9 +3,10 @@ public class PersonProfile{
     @Id;
     private long id;
     private String personType;
-    @Column(unique="referenceId")
+    @Column(unique=true)
     private String referenceId;
     private String fullName;
-    @Column(unique="referenceId")
-    private String ;
+    @Column(unique=true)
+    private String email;
+    private 
 }
