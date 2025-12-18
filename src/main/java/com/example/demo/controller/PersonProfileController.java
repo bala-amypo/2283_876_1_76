@@ -15,6 +15,6 @@ public class PersonProfileController{
    @PostMapping("/")
    public PersonProfileService createData(@RequestBody PersonProfile ss)
    {
-        return ser.createData(ss);
+        return ser.createPerson(ss);
    }
 }
