@@ -24,6 +24,6 @@ public class PersonProfileController{
    @GetMapping("/{id}")
    public PersonProfile getPersonById(@PathVariable Long id)
    {
-     return ser.getPersonById(id);
+     Opional<PersonProfile>s=ser.getPersonById(id);
    }
 }
