@@ -1,4 +1,7 @@
-package com.example.demo.model
+package com.example.demo.model;
+
+import java.time.LocalDateTime;
+import jakarta.persistence.*;
 @Entity
 public class PersonProfile{
     @Id;
@@ -13,5 +16,4 @@ public class PersonProfile{
     private String department;
     private Boolean relationshipDeclared=false;
     private  LocalDateTime createdAt;
-
 }
