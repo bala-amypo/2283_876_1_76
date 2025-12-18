@@ -1,4 +1,5 @@
 package com.example.demo.model
+@Entity
 public class PersonProfile{
     @Id;
     @GenertedValue(strategy=GenerationType.IDENTITY)
@@ -10,6 +11,11 @@ public class PersonProfile{
     @Column(unique=true)
     private String email;
     private String department;
-    private Boolean relationshipDeclared;
-    private  
+    private Boolean relationshipDeclared=false;
+    private  LocalDateTime createdAt;
+    void setId(int id)
+    {
+        
+    }
+
 }
