@@ -13,9 +13,5 @@ public class PersonProfile{
     private String department;
     private Boolean relationshipDeclared=false;
     private  LocalDateTime createdAt;
-    void setId(int id)
-    {
-        
-    }
 
 }
