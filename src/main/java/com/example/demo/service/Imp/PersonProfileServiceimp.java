@@ -1,5 +1,6 @@
 package com.example.demo.service.imp;
 
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.model.PersonProfile;
@@ -18,8 +19,8 @@ public class PersonProfileServiceimp implements PersonProfileService{
         return rep.save(ss);
     }
     @Override
-    public Optioanl<PersonProfile> getPersonById(Long id)
+    public Optional<PersonProfile> getPersonById(Long id)
     {
-        return rep.
+        return rep.findById(id);
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.PersonProfile;
 import com.example.demo.service.PersonProfileService;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.pathVariabe;
 
 @RestController
 @RequestMapping("/api/persons")
@@ -21,7 +22,7 @@ public class PersonProfileController{
         return ser.createPerson(ss);
    }
    @GetMapping("/GET/{id}")
-   public optional<PersonProfile>getPersonById(@pathvariable Long id)
+   public optional<PersonProfile>getPersonById(@pathVariable Long id)
    {
      return ser.getPersonById(id);
    }
