@@ -17,4 +17,9 @@ public class PersonProfileServiceimp implements PersonProfileService{
     {
         return rep.save(ss);
     }
+    @Override
+    public Optioanl<PersonProfile> getPersonById(Long id)
+    {
+        return rep.
+    }
 }
