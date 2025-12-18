@@ -8,5 +8,7 @@ public class PersonProfile{
     private String fullName;
     @Column(unique=true)
     private String email;
-    private 
+    private String department;
+    private Boolean relationshipDeclared;
+    private  
 }
