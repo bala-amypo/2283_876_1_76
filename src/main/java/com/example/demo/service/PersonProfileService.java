@@ -4,5 +4,5 @@ import java.util.*;
 public interface PersonProfileService 
 {
  PersonProfile createPerson(PersonProfile ss);   
- Optional<PersonProfile>getPersonBtId(Long id);
+ Optional<PersonProfile>getPersonById(Long id);
 }
