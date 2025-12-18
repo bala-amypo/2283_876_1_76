@@ -21,8 +21,8 @@ public class PersonProfileController{
    {
         return ser.createPerson(ss);
    }
-   @GetMapping("/GET/{id}")
-   public Optional<PersonProfile>getPersonById(@PathVariable Long id)
+   @GetMapping("/{id}")
+   public PersonProfile getPersonById(@PathVariable Long id)
    {
      return ser.getPersonById(id);
    }
