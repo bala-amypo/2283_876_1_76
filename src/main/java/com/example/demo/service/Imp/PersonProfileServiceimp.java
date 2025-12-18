@@ -9,7 +9,7 @@ import com.example.demo.service.PersonProfileService;
 
 public class PersonProfileServiceimp implements PersonProfileService{
     @Autowired
-    repository rep;
+     PersonProfileRepository rep;
 
     @Override
     public PersonProfile createPerson(PersonProfile ss)
