@@ -37,12 +37,7 @@ public class PersonProfileController{
    @PutMapping("/{id}")
    public personProfile updateRelationshipDeclared(@PathVariable Long id,@PathVariable Boolean declared)
    {
-     Optional<PersonProfile>ss=ser.updateRelationshipDeclared(id,declared);
-     if(ss.isPresent())
-     {
-        
-     }
-
+    return ser.updateRelationshipDeclared(id,declared);
    }
 
 }
