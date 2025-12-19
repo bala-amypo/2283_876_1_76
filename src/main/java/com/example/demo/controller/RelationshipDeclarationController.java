@@ -6,9 +6,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/relationships")
  @PostMapping
-   public class  RelationshipDeclaration(@RequestBody PersonProfile ss)
+   public class  RelationshipDeclaration
    {
       @Autowired
-      ser;
+      RelationshipDeclarationService ser;
+       @PostMapping
+          public RelationshipDeclaration RelationshipDeclarationService(@RequestBody  RelationshipDeclaration ss)
+          {
+               return ser.RelationshipDeclarationService(ss);
+          }
      
    }
