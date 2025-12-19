@@ -3,5 +3,5 @@ import com.example.demo.model.RelationshipDeclaration;
 import java.util.*;
 public interface  RelationshipDeclarationService
 {
-    RelationshipDeclaration declareRealtionship(RelationshipDeclaration ss);
+    RelationshipDeclaration declareRelationship(RelationshipDeclaration ss);
 }

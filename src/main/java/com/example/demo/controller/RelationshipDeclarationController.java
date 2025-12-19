@@ -14,9 +14,9 @@ import com.example.demo.service.RelationshipDeclarationService;
       @Autowired
       RelationshipDeclarationService ser;
        @PostMapping
-          public RelationshipDeclaration declareRealtionship(@RequestBody  RelationshipDeclaration ss)
+          public RelationshipDeclaration declareRelationship(@RequestBody  RelationshipDeclaration ss)
           {
-               return ser.declareRealtionship(ss);
+               return ser.declareRelationship(ss);
           }
      
    }

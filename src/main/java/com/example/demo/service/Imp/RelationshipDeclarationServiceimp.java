@@ -15,7 +15,7 @@ public class RelationshipDeclarationServiceimp implements RelationshipDeclaratio
       RelationshipDeclarationRepository rep;
 
     @Override
-    public RelationshipDeclaration declareRealtionship(RelationshipDeclaration ss)
+    public RelationshipDeclaration declareRelationship(RelationshipDeclaration ss)
     {
         return rep.save(ss);
     }
