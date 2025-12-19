@@ -20,9 +20,8 @@ public class RelationshipDeclarationServiceimp implements RelationshipDeclaratio
         return rep.save(ss);
     }
     @Override
-    public Optinal<RelationshipDeclaration> getDeclarationsByPerson(Long personId)
+    public Optional<RelationshipDeclaration> getDeclarationsByPerson(Long personId)
     {
-        return rep.getDeclarationsByPerson(ss)
-         .orElseThrow(() -> new RuntimeException("Person not found")); 
+        return rep.getDeclarationsByPerson(personId); 
     }
 }

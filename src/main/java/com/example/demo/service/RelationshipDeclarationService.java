@@ -4,5 +4,5 @@ import java.util.*;
 public interface  RelationshipDeclarationService
 {
     RelationshipDeclaration declareRelationship(RelationshipDeclaration ss);
-    Optinal<RelationshipDeclaration> getDeclarationsByPerson(Long personId);
+    Optional<RelationshipDeclaration> getDeclarationsByPerson(Long personId);
 }
