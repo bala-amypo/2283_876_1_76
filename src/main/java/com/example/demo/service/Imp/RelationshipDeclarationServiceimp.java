@@ -19,4 +19,9 @@ public class RelationshipDeclarationServiceimp implements RelationshipDeclaratio
     {
         return rep.save(ss);
     }
+    @Override
+    public Optinal<RelationshipDeclaration> getDeclarationsByPerson(Long personId)
+    {
+        return rep.(ss);
+    }
 }
