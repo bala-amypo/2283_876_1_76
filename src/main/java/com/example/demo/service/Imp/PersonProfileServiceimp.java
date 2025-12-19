@@ -24,8 +24,8 @@ public class PersonProfileServiceimp implements PersonProfileService{
         return rep.findById(id);
     }
     @Override
-    public List<PersonProfile> getPersonById(Long id)
+    public List<PersonProfile> getAllPersons()
     {
-        return rep.findById(id);
+        return rep.findAll();
     }
 }
