@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.model.PersonProfile;
 @Repository
 public interface PersonProfileRepository extends JpaRepository <PersonProfile,Long>{
-    PersonProfile findByReferenceId(String referenceId).orElseThrow(() -> new RuntimeException("Person not found"));
+    Optional<PersonProfile>findByReferenceId(String referenceId)
 }

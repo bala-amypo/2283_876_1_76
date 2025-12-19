@@ -38,6 +38,7 @@ public class PersonProfileServiceimp implements PersonProfileService{
     @Override
     public PersonProfile findByReferenceId(String referenceId)
     {
-        return rep.findByReferenceId(referenceId); 
+       return rep.findByReferenceId(referenceId)
+            .orElseThrow(() -> new RuntimeException("Person not found")); 
     }
 }
