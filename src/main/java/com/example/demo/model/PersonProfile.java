@@ -65,6 +65,7 @@ public class PersonProfile{
     }
     public PersonProfile(long id, String personType, String referenceId, String fullName, String email, String department,
             Boolean relationshipDeclared, LocalDateTime createdAt) {
+                this.id=id;
         this.personType = personType;
         this.referenceId = referenceId;
         this.fullName = fullName;
