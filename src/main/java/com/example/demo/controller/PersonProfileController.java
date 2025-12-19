@@ -40,5 +40,10 @@ public class PersonProfileController{
    {
     return ser.updateRelationshipDeclared(id,declared);
    }
+   @GetMapping("/lookup/{refernceId}")
+   public PersonProfile updateRelationshipDeclared(@PathVariable Long id,@RequestParam Boolean declared)
+   {
+    return ser.updateRelationshipDeclared(id,declared);
+   }
 
 }
