@@ -41,9 +41,9 @@ public class PersonProfileController{
     return ser.updateRelationshipDeclared(id,declared);
    }
    @GetMapping("/lookup/{refernceId}")
-   public PersonProfile findByReferenceId(@PathVariable String referencedId)
+   public PersonProfile findByReferenceId(@PathVariable String referenceId)
    {
-    return ser.findByReferenceId(id,declared);
+    return ser.findByReferenceId(referenceId);
    }
 
 }

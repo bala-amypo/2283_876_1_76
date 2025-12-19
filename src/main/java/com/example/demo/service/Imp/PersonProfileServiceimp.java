@@ -35,4 +35,9 @@ public class PersonProfileServiceimp implements PersonProfileService{
         ss.setRelationshipDeclared(declared);
         return rep.save(ss); 
     }
+    @Override
+    public PersonProfile findByReferenceId(String referenceId)
+    {
+        return rep.(ss); 
+    }
 }
