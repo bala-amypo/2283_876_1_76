@@ -34,9 +34,9 @@ public class PersonProfileController{
      return ser.getAllPersons();
    }
    @PutMapping("/{id}")
-   public List<PersonProfile>getAllPersons()
+   public personProfile updateRelationshipDeclared(@PathVariable Long id,@PathVariable Boolean declared)
    {
-     return ser.getAllPersons();
+     return ser.updateRelationshipDeclared(id,declared);
    }
 
 }
