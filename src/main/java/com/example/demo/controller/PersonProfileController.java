@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.Optional;
 import java.util.List;
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +37,12 @@ public class PersonProfileController{
    @PutMapping("/{id}")
    public personProfile updateRelationshipDeclared(@PathVariable Long id,@PathVariable Boolean declared)
    {
-     return ser.updateRelationshipDeclared(id,declared);
+     Optional<PersonProfile>ss=ser.updateRelationshipDeclared(id,declared);
+     if(ss.isPresent())
+     {
+        
+     }
+
    }
 
 }

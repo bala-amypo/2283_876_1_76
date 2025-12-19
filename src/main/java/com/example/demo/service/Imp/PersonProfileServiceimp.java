@@ -29,7 +29,7 @@ public class PersonProfileServiceimp implements PersonProfileService{
         return rep.findAll();
     }
     @Override
-    public List<PersonProfile> getAllPersons()
+    public personProfile updateRelationshipDeclared(Long id,Boolean declared)
     {
         return rep.findAll();
     }
