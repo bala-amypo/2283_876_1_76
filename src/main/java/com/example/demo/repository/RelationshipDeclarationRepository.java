@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.model.RelationshipDeclaration;
 @Repository
 public interface RelationshipDeclarationRepository extends JpaRepository <RelationshipDeclaration,Long>{
+    Optional<RelationshipDeclaration>getDeclarationsByPerson(Long );
 }
