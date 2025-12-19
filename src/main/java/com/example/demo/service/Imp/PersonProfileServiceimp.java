@@ -38,6 +38,6 @@ public class PersonProfileServiceimp implements PersonProfileService{
     @Override
     public PersonProfile findByReferenceId(String referenceId)
     {
-        return rep.(ss); 
+        return rep.findByReferenceId(referenceId); 
     }
 }
