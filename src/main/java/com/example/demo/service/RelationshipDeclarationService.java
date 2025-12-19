@@ -6,4 +6,5 @@ public interface  RelationshipDeclarationService
     RelationshipDeclaration declareRelationship(RelationshipDeclaration ss);
     List<RelationshipDeclaration> getDeclarationsByPerson(Long personId);
     RelationshipDeclaration verifyDeclaration(Long declaratoinId, Boolean verified);
+    List<RelationshipDeclaration> getAllDeclarations ();
 }

@@ -28,4 +28,9 @@ import com.example.demo.service.RelationshipDeclarationService;
           {
                return ser.verifyDeclaration(declaratoinId,verified);
           }
+       @GetMapping
+          public List<RelationshipDeclaration> getAllDeclarations ()
+          {
+               return ser.getAllDeclarations();
+          }
    }

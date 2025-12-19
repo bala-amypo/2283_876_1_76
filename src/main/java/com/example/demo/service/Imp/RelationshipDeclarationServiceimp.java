@@ -31,4 +31,9 @@ public class RelationshipDeclarationServiceimp implements RelationshipDeclaratio
          ss.setIsVerified(Verified);
          return rep.save(ss);
     }
+     @Override
+    public List<RelationshipDeclaration> getAllDeclarations()
+    {
+        return rep.findAll(); 
+    }
 }
