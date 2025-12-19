@@ -24,8 +24,8 @@ import com.example.demo.service.RelationshipDeclarationService;
                return ser.getDeclarationsByPerson( personId);
           }
        @PutMapping("/{id}/verify")
-          public RelationshipDeclaration verifyDeclaration(@PathVariable Long personId)
+          public RelationshipDeclaration verifyDeclaration(@PathVariable Long declaratoinId,@RequestParam Boolean verified)
           {
-               return ser.getDeclarationsByPerson( personId);
+               return ser.( personId);
           }
    }
