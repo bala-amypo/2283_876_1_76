@@ -4,4 +4,5 @@ import java.util.*;
 public interface  RelationshipDeclarationService
 {
     RelationshipDeclaration declareRelationship(RelationshipDeclaration ss);
+    
 }

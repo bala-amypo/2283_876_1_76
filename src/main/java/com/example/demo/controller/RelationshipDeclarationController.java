@@ -18,5 +18,9 @@ import com.example.demo.service.RelationshipDeclarationService;
           {
                return ser.declareRelationship(ss);
           }
-       @GetMapping("/person/{}")
+       @GetMapping("/person/{personId}")
+           public Optinal<RelationshipDeclaration> getDeclarationsByPerson(@PathVariable Long personId)
+          {
+               return ser.getDeclarationsByPerson(Long personId);
+          }
    }
