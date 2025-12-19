@@ -7,10 +7,10 @@ public class PersonProfile{
     @Id
     private long id;
     private String personType;
-    @Column(unique=true)
+    // @Column(unique=true)
     private String referenceId;
     private String fullName;
-    @Column(unique=true)
+    // @Column(unique=true)
     private String email;
     private String department;
     private Boolean relationshipDeclared=false;
