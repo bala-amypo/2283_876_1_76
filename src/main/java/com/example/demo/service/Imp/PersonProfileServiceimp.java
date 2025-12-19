@@ -31,7 +31,7 @@ public class PersonProfileServiceimp implements PersonProfileService{
     @Override
     public PersonProfile updateRelationshipDeclared(Long id,Boolean declared)
     {
-       PersonProfile ss=rep.findById(id);
+       PersonProfile ss=rep.findById(id).orElseThrow(() -> new RuntimeException("Person not found"));
         ss.setRelationshipDeclared(declared);
         return rep.save(ss); 
     }
