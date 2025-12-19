@@ -20,7 +20,7 @@ public class RelationshipDeclarationServiceimp implements RelationshipDeclaratio
         return rep.save(ss);
     }
     @Override
-    public Optional<RelationshipDeclaration> getDeclarationsByPerson(Long personId)
+    public List<RelationshipDeclaration> getDeclarationsByPerson(Long personId)
     {
         return rep.getDeclarationsByPerson(personId); 
     }

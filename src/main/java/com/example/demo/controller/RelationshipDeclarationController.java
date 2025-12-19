@@ -19,7 +19,7 @@ import com.example.demo.service.RelationshipDeclarationService;
                return ser.declareRelationship(ss);
           }
        @GetMapping("/person/{personId}")
-           public Optional<RelationshipDeclaration> getDeclarationsByPerson(@PathVariable Long personId)
+           public List<RelationshipDeclaration> getDeclarationsByPerson(@PathVariable Long personId)
           {
                return ser.getDeclarationsByPerson( personId);
           }
