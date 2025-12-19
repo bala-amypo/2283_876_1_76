@@ -26,4 +26,5 @@ public class PersonProfileController{
    {
      return ser.getPersonById(id);
    }
+   @GetMapping("/")
 }
