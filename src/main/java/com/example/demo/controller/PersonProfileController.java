@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.PersonProfile;
 import com.example.demo.service.PersonProfileService;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
@@ -35,7 +36,7 @@ public class PersonProfileController{
      return ser.getAllPersons();
    }
    @PutMapping("/{id}/relationship-declared")
-   public PersonProfile updateRelationshipDeclared(@PathVariable Long id,@PathVariable Boolean declared)
+   public PersonProfile updateRelationshipDeclared(@PathVariable Long id,@RequestParam Boolean declared)
    {
     return ser.updateRelationshipDeclared(id,declared);
    }
