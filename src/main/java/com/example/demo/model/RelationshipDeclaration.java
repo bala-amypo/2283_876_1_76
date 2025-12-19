@@ -10,7 +10,7 @@ public class RelationshipDeclaration{
     private String relatedPersonName;
     private String relationshipType;
     private LocalDateTime declaredAt;
-    private Boolean isVerified;
+    private Boolean isVerified=false;
      public Long getId() {
         return id;
     }
