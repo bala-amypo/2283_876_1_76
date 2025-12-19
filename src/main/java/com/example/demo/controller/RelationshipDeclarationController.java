@@ -18,5 +18,5 @@ import com.example.demo.service.RelationshipDeclarationService;
           {
                return ser.declareRelationship(ss);
           }
-     
+       @GetMapping("/person/{}")
    }
