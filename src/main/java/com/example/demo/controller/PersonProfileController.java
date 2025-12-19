@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.PersonProfile;
@@ -28,6 +29,11 @@ public class PersonProfileController{
      return ser.getPersonById(id);
    }
    @GetMapping("/")
+   public List<PersonProfile>getAllPersons()
+   {
+     return ser.getAllPersons();
+   }
+   @PutMapping("/{id}")
    public List<PersonProfile>getAllPersons()
    {
      return ser.getAllPersons();
