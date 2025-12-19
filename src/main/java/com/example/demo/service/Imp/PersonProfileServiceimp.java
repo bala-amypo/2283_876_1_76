@@ -28,4 +28,9 @@ public class PersonProfileServiceimp implements PersonProfileService{
     {
         return rep.findAll();
     }
+    @Override
+    public List<PersonProfile> getAllPersons()
+    {
+        return rep.findAll();
+    }
 }
