@@ -25,8 +25,10 @@ public class RelationshipDeclarationServiceimp implements RelationshipDeclaratio
         return rep.findByPersonId(personId); 
     }
     @Override
-    public RelationshipDeclaration verifyDeclaration(Long id,Boolean isVerified)
+    public RelationshipDeclaration verifyDeclaration(Long id,Boolean Verified)
     {
-         RelationshipDeclaration ss=rep.findById(id)orElseThrow(() -> new RuntimeException("Person not found"));
+         RelationshipDeclaration ss=rep.findById(id).orElseThrow(() -> new RuntimeException("Person not found"));
+         ss.setIsVerified(Verified);
+         return rep.save(ss);
     }
 }
