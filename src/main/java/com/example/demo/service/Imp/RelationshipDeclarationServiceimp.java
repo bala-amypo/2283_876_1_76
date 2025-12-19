@@ -22,6 +22,6 @@ public class RelationshipDeclarationServiceimp implements RelationshipDeclaratio
     @Override
     public List<RelationshipDeclaration> getDeclarationsByPerson(Long personId)
     {
-        return rep.getDeclarationsByPerson(personId); 
+        return rep.findByPersonId(personId); 
     }
 }
