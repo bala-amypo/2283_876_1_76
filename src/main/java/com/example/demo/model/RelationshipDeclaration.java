@@ -33,12 +33,12 @@ public class RelationshipDeclaration{
     public String getRelationshipType() {
         return relationshipType;
     }
+    public String setdescription() {
+        this.description=description;
+    }
+    
     public String getdescription() {
         return description;
-    }
-    public String getdescription() {
-        return description;
-    }
     public void setRelationshipType(String relationshipType) {
         this.relationshipType = relationshipType;
     }
