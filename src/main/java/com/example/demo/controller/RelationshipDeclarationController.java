@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/relationships")
  @PostMapping
-   public RelationshipDeclaration RelationshipDeclarationService(@RequestBody PersonProfile ss)
+   public class  RelationshipDeclaration(@RequestBody PersonProfile ss)
    {
-        return ser.createPerson(ss);
+      @Autowired
+      ser;
+     
    }
