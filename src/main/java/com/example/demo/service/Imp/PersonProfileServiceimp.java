@@ -33,6 +33,6 @@ public class PersonProfileServiceimp implements PersonProfileService{
     {
         PersonProfile ss=getPersonById(id);
         ss.setRelationshipDeclared(declared);
-        return rep.save(p); 
+        return rep.save(ss); 
     }
 }
