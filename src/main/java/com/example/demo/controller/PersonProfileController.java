@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class PersonProfileController{
      @Autowired
     PersonProfileService ser;
-   @PostMapping("/")
+   @PostMapping
    public PersonProfile createPerson(@RequestBody PersonProfile ss)
    {
         return ser.createPerson(ss);
@@ -29,7 +29,7 @@ public class PersonProfileController{
    {
      return ser.getPersonById(id);
    }
-   @GetMapping("/")
+   @GetMapping
    public List<PersonProfile>getAllPersons()
    {
      return ser.getAllPersons();
