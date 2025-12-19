@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.Optional;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,9 @@ public class PersonProfileController{
      return ser.getPersonById(id);
    }
    @GetMapping("/")
-   public List<>
+   public List<PersonProfile>getAllPersons()
+   {
+     return ser.
+   }
 
 }
