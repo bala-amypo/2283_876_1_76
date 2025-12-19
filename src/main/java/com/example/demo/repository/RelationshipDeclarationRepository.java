@@ -5,6 +5,5 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.model.RelationshipDeclaration;
 @Repository
-public interface RelationshipDeclaration extends JpaRepository <PersonProfile,Long>{
-    Optional<PersonProfile>findByReferenceId(String referenceId);
+public interface RelationshipDeclarationRepository extends JpaRepository <RelationshipDeclaration,Long>{
 }

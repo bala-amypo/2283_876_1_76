@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.RelationshipDeclaration;
 import com.example.demo.service.RelationshipDeclarationService;
 
-import com.example.demo.repository.PersonProfileRepository;
+import com.example.demo.repository.RelationshipDeclarationRepository;
 @Service
 
 
-public class PersonProfileServiceimp implements PersonProfileService{
+public class RelationshipDeclarationServiceimp implements RelationshipDeclarationService{
     @Autowired
-     PersonProfileRepository rep;
+      RelationshipDeclarationRepository rep;
 
     @Override
     public PersonProfile createPerson(PersonProfile ss)
