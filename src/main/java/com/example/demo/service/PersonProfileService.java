@@ -5,4 +5,5 @@ public interface PersonProfileService
 {
  PersonProfile createPerson(PersonProfile ss);   
  Optional<PersonProfile>getPersonById(Long id);
+ List<PersonProfile>getAllPersons();
 }

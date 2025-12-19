@@ -30,7 +30,7 @@ public class PersonProfileController{
    @GetMapping("/")
    public List<PersonProfile>getAllPersons()
    {
-     return ser.
+     return ser.getAllPersons();
    }
 
 }
