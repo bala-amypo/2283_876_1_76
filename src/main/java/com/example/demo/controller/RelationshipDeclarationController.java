@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
-import com.example.demo.model.PersonProfile;
-import com.example.demo.service.PersonProfileService;
+import com.example.demo.model.RelationshipDeclaration;
+import com.example.demo.service.RelationshipDeclarationService;
+
 @RestController
 @RequestMapping("/api/relationships")
- @PostMapping
-   public class  RelationshipDeclaration
+   public class  RelationshipDeclarationController
    {
       @Autowired
       RelationshipDeclarationService ser;
