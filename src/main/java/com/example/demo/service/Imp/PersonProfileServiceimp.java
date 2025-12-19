@@ -31,6 +31,8 @@ public class PersonProfileServiceimp implements PersonProfileService{
     @Override
     public personProfile updateRelationshipDeclared(Long id,Boolean declared)
     {
-        P
+        PersonProfile ss=getPersonById(id);
+        ss.setRelationshipDeclared(declared);
+        return rep.save(p); 
     }
 }
