@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
  @PostMapping
-   public RelationshipDeclaration(@RequestBody PersonProfile ss)
+   public RelationshipDeclaration RelationshipDeclarationService(@RequestBody PersonProfile ss)
    {
         return ser.createPerson(ss);
    }
