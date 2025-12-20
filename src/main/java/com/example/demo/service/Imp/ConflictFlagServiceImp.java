@@ -26,7 +26,7 @@ public class ConflictFlagServiceImp implements ConflictFlagService
         return rep.findByCaseId(caseId);
     }
         @Override
-    public ConflictCase getCasesById(Long id)
+    public ConflictFlag getFlagById(Long id)
     {
         return rep.findById(id).orElseThrow(() -> new RuntimeException("Conflict case not found"));
     }
