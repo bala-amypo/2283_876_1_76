@@ -34,7 +34,7 @@ public class ConflictCaseServiceImp implements ConflictCaseService
        @Override
     public ConflictCase getCasesById(Long id)
     {
-        return rep.findById(id);
+        return rep.findById(id).orElseThrow(() -> new ApiException("Conflict case not found"));
     }
        @Override
     public ConflictCase getAllCases()
