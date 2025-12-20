@@ -1,6 +1,7 @@
 package com.example.demo.service;
 import com.example.demo.model.ConflictCase;
 import java.util.*;
-public interface  VendorEngagementService
+public interface  ConflictCaseService
 {
-     VendorEngagementRecord addEngagement( VendorEngagementRecord record);
+     ConflictCase ConflictCase( ConflictCase conflictCase);
+}
