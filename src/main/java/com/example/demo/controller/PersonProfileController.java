@@ -41,4 +41,12 @@ public class PersonProfileController {
     public ResponseEntity<PersonProfile> lookup(@PathVariable String refId) {
         return ResponseEntity.ok(service.findByReferenceId(refId));
     }
+
+    @PutMapping("/{id}/relationship")
+    public PersonProfile toggleRelationshipDeclared(
+            @PathVariable Long id,
+            @RequestParam Boolean declared) {
+
+        return service.updateRelationshipDeclared(id, declared);
+    }
 }
