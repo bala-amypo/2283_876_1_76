@@ -19,4 +19,9 @@ public class ConflictCaseController{
           {
                return ser.createCase(conflictCase);
           }
+     @PutMapping
+          public ConflictCase createCase(@RequestBody  ConflictCase conflictCase)
+          {
+               return ser.createCase(conflictCase);
+          }
 }
