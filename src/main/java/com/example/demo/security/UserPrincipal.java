@@ -34,6 +34,12 @@ public class UserPrincipal implements UserDetails, Authentication {
     public String getPassword() {
         return password;
     }
+    // private Long id = 1L;
+    @Override
+    public Long getId() {
+        return id;
+    }
+
 
     @Override
     public String getUsername() {
