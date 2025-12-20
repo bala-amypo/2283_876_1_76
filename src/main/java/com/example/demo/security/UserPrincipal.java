@@ -19,6 +19,7 @@ public class UserPrincipal implements UserDetails {
         this.password = password;
         this.authorities = authorities;
     }
+    
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

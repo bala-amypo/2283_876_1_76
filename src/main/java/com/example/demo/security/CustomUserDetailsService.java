@@ -26,10 +26,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
 
-        UserDetails user = users.get(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-        return user;
+        return new UserPrincipal(
+                username,
+                "",
+                List.of(new SimpleGrantedAuthority("ROLE_USER"))
+        );
     }
+    public UserPrincipal register(String username, String password, String role){
+
+    }
+
 }
