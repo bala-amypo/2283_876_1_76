@@ -18,8 +18,11 @@ import com.example.demo.service.PersonProfileService;
 @RestController
 @RequestMapping("/api/persons")
 public class PersonProfileController{
-    @Autowired
-    private PersonProfileService ser;
+    private final PersonProfileService ser;
+
+    public PersonProfileController(PersonProfileService ser) {
+        this.ser = ser;
+    }
 
     public PersonProfileController() {
     }

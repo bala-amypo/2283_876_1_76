@@ -1,50 +1,71 @@
 package com.example.demo.security;
 
-import java.util.Date;
-import java.util.List;
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+
+import java.security.Key;
+import java.util.*;
 import java.util.stream.Collectors;
 
-import javax.crypto.SecretKey;
-
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.stereotype.Component;
-
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
-
-@Component
 public class JwtTokenProvider {
 
-    private final SecretKey key =
-            Keys.hmacShaKeyFor("my-secret-key-my-secret-key-12345".getBytes());
+    private final Key key;
+    private final long validityInMs;
 
-    public String getUsername(String token) {
-        return getClaims(token).getSubject();
+    public JwtTokenProvider(String secret, long validityInMs) {
+        this.key = Keys.hmacShaKeyFor(secret.getBytes());
+        this.validityInMs = validityInMs;
     }
 
-    public List<SimpleGrantedAuthority> getRoles(String token) {
-        List<String> roles = getClaims(token).get("roles", List.class);
+    public String generateToken(Authentication authentication) {
+        String username = authentication.getName();
 
-        return roles.stream()
-                .map(SimpleGrantedAuthority::new)
+        List<String> roles = authentication.getAuthorities()
+                .stream()
+                .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
+
+        Claims claims = Jwts.claims().setSubject(username);
+        claims.put("roles", roles);
+
+        Date now = new Date();
+        Date expiry = new Date(now.getTime() + validityInMs);
+
+        return Jwts.builder()
+                .setClaims(claims)
+                .setIssuedAt(now)
+                .setExpiration(expiry)
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
     }
 
     public boolean validateToken(String token) {
         try {
-            getClaims(token);
+            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
             return true;
-        } catch (Exception e) {
+        } catch (JwtException | IllegalArgumentException e) {
             return false;
         }
     }
 
-    private Claims getClaims(String token) {
+    public String getUsername(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+    }
+
+    public List<String> getRoles(String token) {
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
                 .getBody();
+
+        return claims.get("roles", List.class);
     }
 }
