@@ -15,7 +15,7 @@ public class ConflictCaseServiceImpl implements ConflictCaseService
 {
     private ConflictCaseRepository rep;
 
-    public RelationshipDeclarationServiceImpl(ConflictCaseRepository rep)
+    public ConflictCaseServiceImpl(ConflictCaseRepository rep)
     {
         this.rep = rep;
     }

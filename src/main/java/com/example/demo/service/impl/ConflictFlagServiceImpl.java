@@ -17,7 +17,7 @@ public class ConflictFlagServiceImpl implements ConflictFlagService
     
     private ConflictFlagRepository rep;
 
-    public RelationshipDeclarationServiceImpl(ConflictFlagRepository rep)
+    public ConflictFlagServiceImpl(ConflictFlagRepository rep)
     {
         this.rep = rep;
     }
