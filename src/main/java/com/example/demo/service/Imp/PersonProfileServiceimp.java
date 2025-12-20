@@ -21,7 +21,7 @@ public class PersonProfileServiceimp implements PersonProfileService{
     @Override
     public Optional<PersonProfile> getPersonById(Long id)
     {
-        return rep.findById(id);
+        return rep.findById(id) .orElseThrow(() -> new ApiException("person not found"));
     }
     @Override
     public List<PersonProfile> getAllPersons()
