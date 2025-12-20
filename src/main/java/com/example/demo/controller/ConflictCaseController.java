@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
 
 import com.example.demo.model.ConflictCase;
 import com.example.demo.service.ConflictCaseService;
@@ -30,7 +31,7 @@ public class ConflictCaseController{
         }
         @GetMapping("/{id}")
 		public ResponseEntity<ConflictCase> getCase(@PathVariable Long id) {
-			return ResponseEntity.ok(service.getCaseById(id));
+			return ResponseEntity.ok(ser.getCaseById(id));
 		}
 
         @GetMapping
