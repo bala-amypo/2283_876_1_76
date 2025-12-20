@@ -30,4 +30,9 @@ public class ConflictFlagServiceImp implements ConflictFlagService
     {
         return rep.findById(id).orElseThrow(() -> new RuntimeException("Conflict case not found"));
     }
+       @Override
+    public List<ConflictFlag> getAllFlags()
+    {
+        return rep.findAll();
+    }
 }

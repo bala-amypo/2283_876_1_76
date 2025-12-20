@@ -28,4 +28,8 @@ public class ConflictFlagController{
         public ConflictFlag getFlagById(@PathVariable Long id){
               return ser.getFlagById(id);
         }
+          @GetMapping
+        public List<ConflictFlag>getAllFlags(){
+              return ser.getAllFlags();
+        }
 }
