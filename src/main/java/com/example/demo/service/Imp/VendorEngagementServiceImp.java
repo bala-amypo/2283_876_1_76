@@ -22,6 +22,6 @@ public class VendorEngagementServiceImp implements VendorEngagementService
        @Override
     public List<VendorEngagementRecord>getEngagementsByEmployee(Long employeeId)
     {
-        return rep.findByemployeeId(employeeId);
+        return rep.findByEmployeeId(employeeId);
     }
 }
