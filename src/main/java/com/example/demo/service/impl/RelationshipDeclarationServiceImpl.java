@@ -15,12 +15,12 @@ public class RelationshipDeclarationServiceImpl implements RelationshipDeclarati
     
 
     private final RelationshipDeclarationRepository rep;
-    private final PersonProfileRepository presrep;
+    private final PersonProfileRepository persrep;
 
     public RelationshipDeclarationServiceImpl(RelationshipDeclarationRepository rep,PersonProfileRepository persrep)
     {
         this.rep = rep;
-        this.pesrrep = persrep;
+        this.persrep = persrep;
     }
 
     @Override
