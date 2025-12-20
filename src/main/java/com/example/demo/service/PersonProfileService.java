@@ -12,8 +12,8 @@ public interface PersonProfileService {
 
     List<PersonProfile> getAllPersons();
 
-    PersonProfile updateRelationshipDeclared(Long id, Boolean declared);
-
+    PersonProfile updateRelationshipDeclared(Long id, boolean declared);
+    
     PersonProfile findByReferenceId(String referenceId);
     
 }

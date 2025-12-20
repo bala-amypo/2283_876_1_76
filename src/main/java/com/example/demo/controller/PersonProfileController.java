@@ -42,11 +42,12 @@ public class PersonProfileController {
     );
 }
 
-    @PutMapping("/{id}/relationship")
+   @PutMapping("/{id}/relationship")
     public PersonProfile toggleRelationshipDeclared(
-            @PathVariable Long id,
-            @RequestParam Boolean declared) {
+        @PathVariable Long id,
+        @RequestParam boolean declared) {
 
-        return service.updateRelationshipDeclared(id, declared);
-    }
+    return service.updateRelationshipDeclared(id, declared);
+}
+
 }

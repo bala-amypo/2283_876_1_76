@@ -43,12 +43,12 @@ public class PersonProfileServiceImpl implements PersonProfileService {
         return repo.findAll(); // tests verify this call
     }
 
-    @Override
-    public PersonProfile updateRelationshipDeclared(Long id, Boolean declared) {
-        PersonProfile p = getPersonById(id);
-        p.setRelationshipDeclared(declared);
-        return repo.save(p);
-    }
+  @Override
+    public PersonProfile updateRelationshipDeclared(Long id, boolean declared) {
+    PersonProfile p = getPersonById(id);
+    p.setRelationshipDeclared(declared);
+    return repo.save(p);
+}
 
     @Override
     public PersonProfile findByReferenceId(String referenceId) {
