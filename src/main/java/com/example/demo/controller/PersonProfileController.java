@@ -50,5 +50,10 @@ public class PersonProfileController{
    {
     return ser.findByReferenceId(referenceId);
    }
+   @GetMapping("/lookup/{refId}")
+    public PersonProfile lookup(@PathVariable String refId) {
+        return ser.findByReferenceId(refId);
+    }
+
 
 }
