@@ -36,11 +36,8 @@ public class CustomUserDetailsService implements UserDetailsService {
                         .collect(Collectors.toList())
         );
     }
-    @Override
-    public UserDetails loadUserByUsername(String username) {
-        return register(username, "password", "ROLE_USER");
-    }
 
+    @Override
     public UserPrincipal register(String username, String password, String role) {
         return new UserPrincipal(
                 username,
@@ -55,11 +52,4 @@ public class CustomUserDetailsService implements UserDetailsService {
         return register(username, "password", "ROLE_USER");
     }
 
-    public UserPrincipal register(String username, String password, String role) {
-        return new UserPrincipal(
-                username,
-                password,
-                List.of(new SimpleGrantedAuthority(role))
-        );
-    }
 }

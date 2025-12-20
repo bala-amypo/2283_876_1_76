@@ -19,24 +19,25 @@ public class JwtTokenProvider {
         this.validityInMs = validityInMs;
     }
 
-    // 🔴 REQUIRED BY TEST
     public String generateToken(UserPrincipal user) {
+
         Date now = new Date();
         Date expiry = new Date(now.getTime() + validityInMs);
 
         List<String> roles = user.getAuthorities()
                 .stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toList());
+                .map(a -> a.getAuthority())
+                .toList();
 
         return Jwts.builder()
-                .setSubject(user.getUsername())
+                .setSubject(user.getName())
                 .claim("roles", roles)
                 .setIssuedAt(now)
                 .setExpiration(expiry)
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
+
 
     public boolean validateToken(String token) {
         try {
