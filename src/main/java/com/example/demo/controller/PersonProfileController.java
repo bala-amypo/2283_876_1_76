@@ -1,3 +1,13 @@
+package com.example.demo.controller;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.example.demo.model.PersonProfile;
+import com.example.demo.service.PersonProfileService;
+
 @RestController
 @RequestMapping("/api/persons")
 public class PersonProfileController {
