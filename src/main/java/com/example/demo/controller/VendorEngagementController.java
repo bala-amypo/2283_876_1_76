@@ -15,8 +15,8 @@ public class VendorEngagementController{
     @Autowired
     VendorEngagementService  ser;
     @PostMapping
-          public VendorEngagementRecord addEngagement(@RequestBody  VendorEngagementRecord ss)
+          public VendorEngagementRecord addEngagement(@RequestBody  VendorEngagementRecord record)
           {
-               return ser.addEngagement(ss);
+               return ser.addEngagement(record);
           }
 }

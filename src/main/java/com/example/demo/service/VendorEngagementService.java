@@ -4,5 +4,5 @@ import java.util.*;
 
 public interface  VendorEngagementService
 {
-    
+     VendorEngagementRecord addEngagement( VendorEngagementRecord record);
 }
