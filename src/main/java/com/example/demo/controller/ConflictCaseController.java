@@ -9,4 +9,14 @@ import com.example.demo.service.ConflictCaseService;
 
 
 @RestController
-@RequestMapping("/api/engagements")
+@RequestMapping("/api/conflict-cases")
+
+public class ConflictCaseController{
+     @Autowired
+    ConflictCaseService  ser;
+     @PostMapping
+          public VendorEngagementRecord addEngagement(@RequestBody  VendorEngagementRecord record)
+          {
+               return ser.addEngagement(record);
+          }
+}
