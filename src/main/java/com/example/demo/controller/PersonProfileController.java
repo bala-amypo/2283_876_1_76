@@ -26,7 +26,7 @@ public class PersonProfileController{
 
 
 	@PostMapping
-	public PersonProfile createPerson(@RequestBody PersonProfile ss)
+	public PersonProfile create(@RequestBody PersonProfile ss)
 	{
 		return ser.createPerson(ss);
 	}
