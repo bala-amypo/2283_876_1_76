@@ -41,10 +41,12 @@ public class ConflictCaseServiceImpl implements ConflictCaseService
     }
 
     @Override
-    public ConflictCase getCasesById(Long id)
+    public ConflictCase getCaseById(Long id)
     {
         return rep.findById(id).orElseThrow(() -> new RuntimeException("Conflict case not found"));
     }
+    
+
 
     @Override
     public List<ConflictCase> getAllCases()
