@@ -32,5 +32,9 @@ public class ConflictCaseController{
         public Optional<ConflictCase>getCasesById(@PathVariable Long id){
               return ser.getCasesById(id);
         }
+        @GetMapping
+        public List<ConflictCase>getCasesById(@PathVariable Long id){
+              return ser.getCasesById(id);
+        }
 
 }
