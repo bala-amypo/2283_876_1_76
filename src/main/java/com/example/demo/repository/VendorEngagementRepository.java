@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.model.VendorEngagementRecord;
 @Repository
 public interface VendorEngagementRepository extends JpaRepository <VendorEngagementRecord,Long>{
-   List<VendorEngagementRecord>findByemployeeId(Long employeeId);
+   List<VendorEngagementRecord>findByEmployeeId(Long employeeId);
 }
