@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.VendorEngagementRecord;
 import com.example.demo.service.VendorEngagementService;
 import com.example.demo.repository.VendorEngagementRecordRepository;
+import com.example.demo.repository.PersonProfileRepository;
 
 @Service
 
@@ -14,9 +15,11 @@ public class VendorEngagementServiceImpl implements VendorEngagementService
 {
     
     private final VendorEngagementRecordRepository rep;
+    private final PersonProfileRepository persrep;
 
-    public VendorEngagementServiceImpl(VendorEngagementRecordRepository rep){
+    public VendorEngagementServiceImpl(VendorEngagementRecordRepository rep, PersonProfileRepository persrep){
         this.rep = rep;
+        this.persrep = persrep;
     }
     
     @Override

@@ -20,6 +20,7 @@ public class RelationshipDeclarationServiceImpl implements RelationshipDeclarati
     public RelationshipDeclarationServiceImpl(RelationshipDeclarationRepository rep,PersonProfileRepository persrep)
     {
         this.rep = rep;
+        this.pesrrep = persrep;
     }
 
     @Override
