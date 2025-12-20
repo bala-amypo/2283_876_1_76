@@ -19,7 +19,7 @@ public class ConflictCaseController{
           {
                return ser.createCase(conflictCase);
           }
-     @PutMapping
+     @PutMapping("/")
           public ConflictCase updateCaseStatus(@PathVariable Long caseId,@RequestParam String status)
           {
                return ser.updateCaseStatus(caseId,status);
