@@ -3,5 +3,5 @@ import com.example.demo.model.ConflictCase;
 import java.util.*;
 public interface  ConflictCaseService
 {
-     ConflictCase ConflictCase( ConflictCase conflictCase);
+     ConflictCase createCase( ConflictCase conflictCase);
 }

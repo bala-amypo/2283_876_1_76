@@ -16,8 +16,8 @@ public class ConflictCaseServiceImp implements ConflictCaseService
     @Autowired
      ConflictCaseRepository rep;
        @Override
-    public ConflictCase addEngagement(VendorEngagementRecord record)
+    public ConflictCase createCase(ConflictCase conflictCase)
     {
-        return rep.save(record);
+        return rep.save(conflictCase);
     }
 }
