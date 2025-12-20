@@ -24,8 +24,8 @@ public class ConflictCaseController{
           {
                return ser.updateCaseStatus(caseId,status);
           }
-      @GetMapping("/person/{}")
-        public List<VendorEngagementRecord>getEngagementsByEmployee(@PathVariable Long employeeId){
-              return ser.getEngagementsByEmployee(employeeId);
+      @GetMapping("/person/{personId}")
+        public List<ConflictCase>getCasesByPerson(@PathVariable Long personId){
+              return ser.getCasesByPerson(personId);
         }
 }

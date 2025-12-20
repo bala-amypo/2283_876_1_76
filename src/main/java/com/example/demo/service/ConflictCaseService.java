@@ -5,4 +5,5 @@ public interface  ConflictCaseService
 {
      ConflictCase createCase( ConflictCase conflictCase);
      ConflictCase updateCaseStatus(Long caseId,String status);
+     List<ConflictCase>getCasesByPerson(Long personId);
 }
