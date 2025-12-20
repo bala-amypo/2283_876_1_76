@@ -24,10 +24,12 @@ public class PersonProfileController {
         return ResponseEntity.ok(service.createPerson(p));
     }
 
+    
     @GetMapping("/{id}")
     public ResponseEntity<Optional<PersonProfile>> getById(@PathVariable Long id) {
         return ResponseEntity.ok(service.getPersonById(id));
     }
+
 
     @GetMapping
     public ResponseEntity<List<PersonProfile>> getAll() {
