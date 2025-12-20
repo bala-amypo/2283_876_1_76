@@ -30,30 +30,39 @@ public class PersonProfileController{
 	{
 		return ser.createPerson(ss);
 	}
+
+	// @GetMapping("/{id}")
+	// public Optional<PersonProfile> getPersonById(@PathVariable Long id)
+	// {
+	// 	return ser.getPersonById(id);
+	// }
+
 	@GetMapping("/{id}")
-	public Optional<PersonProfile> getPersonById(@PathVariable Long id)
-	{
+	public Optional<PersonProfile> getById(@PathVariable Long id) {
 		return ser.getPersonById(id);
 	}
+
+
 	@GetMapping
 	public List<PersonProfile>getAllPersons()
 	{
 		return ser.getAllPersons();
 	}
+
 	@PutMapping("/{id}/relationship-declared")
 	public PersonProfile updateRelationshipDeclared(@PathVariable Long id,@RequestParam Boolean declared)
 	{
 		return ser.updateRelationshipDeclared(id,declared);
 	}
+
 	@GetMapping("/lookup/{referenceId}")
 	public PersonProfile findByReferenceId(@PathVariable String referenceId)
 	{
-	return ser.findByReferenceId(referenceId);
+		return ser.findByReferenceId(referenceId);
 	}
+
 	@GetMapping("/lookup/{refId}")
 	public PersonProfile lookup(@PathVariable String refId) {
-	return ser.findByReferenceId(refId);
+		return ser.findByReferenceId(refId);
 	}
-
-
 }
