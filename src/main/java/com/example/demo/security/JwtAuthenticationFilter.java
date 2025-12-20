@@ -2,6 +2,7 @@ package com.example.demo.security;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -35,14 +36,22 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             if (jwtTokenProvider.validateToken(token)) {
                 String username = jwtTokenProvider.getUsername(token);
-                List<SimpleGrantedAuthority> roles =
-                        jwtTokenProvider.getRoles(token);
-            
-                UsernamePasswordAuthenticationToken auth =
-                        new UsernamePasswordAuthenticationToken(
-                                username, null, roles);
 
-                SecurityContextHolder.getContext().setAuthentication(auth);
+                List<SimpleGrantedAuthority> authorities =
+                        jwtTokenProvider.getRoles(token)
+                                .stream()
+                                .map(role -> new SimpleGrantedAuthority(role))
+                                .collect(Collectors.toList());
+
+                UsernamePasswordAuthenticationToken authentication =
+                        new UsernamePasswordAuthenticationToken(
+                                username,
+                                null,
+                                authorities
+                        );
+
+                SecurityContextHolder.getContext()
+                        .setAuthentication(authentication);
             }
         }
 
