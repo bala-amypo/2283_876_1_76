@@ -9,7 +9,7 @@ import com.example.demo.service.VendorEngagementService;
 
 
 @RestController
-@RequestMapping("/api/engagements")
+@RequestMapping("/api/")
 
 public class VendorEngagementController{
     @Autowired

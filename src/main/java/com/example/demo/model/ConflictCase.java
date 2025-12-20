@@ -4,7 +4,7 @@ import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 
 
-public class Sentity 
+public class ConflictCase 
 {
     @Id
    private Long id;
@@ -63,7 +63,7 @@ public class Sentity
    public void setDetectedAt(LocalDateTime detectedAt) {
     this.detectedAt = detectedAt;
    }
-   public Sentity(Long id, Long primaryPersonId, Long secondaryPersonId, String triggerSource, String riskLevel,
+   public ConflictCase(Long id, Long primaryPersonId, Long secondaryPersonId, String triggerSource, String riskLevel,
         String details, String status, LocalDateTime detectedAt) {
     this.id = id;
     this.primaryPersonId = primaryPersonId;
@@ -74,7 +74,7 @@ public class Sentity
     this.status = status;
     this.detectedAt = detectedAt;
    }
-   public Sentity() {
+   public ConflictCase() {
    }
    
 }
