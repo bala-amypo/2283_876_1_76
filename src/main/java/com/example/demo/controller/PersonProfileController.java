@@ -1,68 +1,41 @@
 package com.example.demo.controller;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.model.PersonProfile;
 import com.example.demo.service.PersonProfileService;
 
 @RestController
 @RequestMapping("/api/persons")
-public class PersonProfileController{
-	private final PersonProfileService ser;
+public class PersonProfileController {
 
-	public PersonProfileController(PersonProfileService ser) {
-		this.ser = ser;
-	}
+    private final PersonProfileService service;
 
+    public PersonProfileController(PersonProfileService service) {
+        this.service = service;
+    }
 
-	@PostMapping
-	public PersonProfile create(@RequestBody PersonProfile ss)
-	{
-		return ser.createPerson(ss);
-	}
+    @PostMapping
+    public ResponseEntity<PersonProfile> create(@RequestBody PersonProfile p) {
+        return ResponseEntity.ok(service.createPerson(p));
+    }
 
-	// @GetMapping("/{id}")
-	// public Optional<PersonProfile> getPersonById(@PathVariable Long id)
-	// {
-	// 	return ser.getPersonById(id);
-	// }
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<PersonProfile>> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getPersonById(id));
+    }
 
-	@GetMapping("/{id}")
-	public Optional<PersonProfile> getById(@PathVariable Long id) {
-		return ser.getPersonById(id);
-	}
+    @GetMapping
+    public ResponseEntity<List<PersonProfile>> getAll() {
+        return ResponseEntity.ok(service.getAllPersons());
+    }
 
-
-	@GetMapping
-	public List<PersonProfile>getAllPersons()
-	{
-		return ser.getAllPersons();
-	}
-
-	@PutMapping("/{id}/relationship-declared")
-	public PersonProfile updateRelationshipDeclared(@PathVariable Long id,@RequestParam Boolean declared)
-	{
-		return ser.updateRelationshipDeclared(id,declared);
-	}
-
-	@GetMapping("/lookup/{referenceId}")
-	public PersonProfile findByReferenceId(@PathVariable String referenceId)
-	{
-		return ser.findByReferenceId(referenceId);
-	}
-
-	@GetMapping("/lookup/{refId}")
-	public PersonProfile lookup(@PathVariable String refId) {
-		return ser.findByReferenceId(refId);
-	}
+    @GetMapping("/lookup/{refId}")
+    public ResponseEntity<PersonProfile> lookup(@PathVariable String refId) {
+        return ResponseEntity.ok(service.findByReferenceId(refId));
+    }
 }

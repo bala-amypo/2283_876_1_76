@@ -45,6 +45,11 @@ public class ConflictCaseServiceImpl implements ConflictCaseService
     {
         return rep.findById(id).orElseThrow(() -> new RuntimeException("Conflict case not found"));
     }
+    @Override
+    public ConflictCase getCaseById(Long id) {
+        return repo.findById(id).orElseThrow();
+    }
+
     
 
 

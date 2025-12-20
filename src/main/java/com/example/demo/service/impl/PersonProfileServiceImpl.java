@@ -1,10 +1,10 @@
 package com.example.demo.service.impl;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.exception.ApiException;
 import com.example.demo.model.PersonProfile;
 import com.example.demo.repository.PersonProfileRepository;
 import com.example.demo.service.PersonProfileService;
@@ -27,25 +27,21 @@ public class PersonProfileServiceImpl implements PersonProfileService {
     public Optional<PersonProfile> getPersonById(Long id) {
         return repo.findById(id);
     }
-    @Override
-    public PersonProfile updateRelationshipDeclared(Long id, Boolean declared) {
-
-        PersonProfile person = repo.findById(id)
-                .orElseThrow(() -> new ApiException("Person not found"));
-
-        person.setRelationshipDeclared(declared);
-        return repo.save(person);
-    }
 
     @Override
     public List<PersonProfile> getAllPersons() {
         return repo.findAll();
     }
 
+    @Override
+    public PersonProfile updateRelationshipDeclared(Long id, Boolean declared) {
+        PersonProfile p = repo.findById(id).orElseThrow();
+        p.setRelationshipDeclared(declared);
+        return repo.save(p);
+    }
 
     @Override
     public PersonProfile findByReferenceId(String referenceId) {
-        return repo.findByReferenceId(referenceId)
-                .orElseThrow(() -> new ApiException("reference not found"));
+        return repo.findByReferenceId(referenceId).orElseThrow();
     }
 }
