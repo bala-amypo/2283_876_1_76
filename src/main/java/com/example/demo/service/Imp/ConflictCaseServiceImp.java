@@ -27,19 +27,8 @@ public class ConflictCaseServiceImp implements ConflictCaseService
        ss.setStatus(status);
        return rep.save(ss);
     }
+    @Override
     public List<ConflictCase> getCasesByPerson(Long personId) {
-
-        List<ConflictCase> result = new ArrayList<>();
-
-        // primary role
-        result.addAll(rep.findByPrimaryPersonId(personId));
-
-        // secondary role
-        result.addAll(rep.findBySecondaryPersonId(personId));
-
-        // remove duplicates (important!)
-        return result.stream()
-                     .distinct()
-                     .toList();
+        return rep.findByPrimaryPersonIdOrSecondaryPersonId(personId, personId);
     }
 }
