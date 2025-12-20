@@ -21,7 +21,7 @@ public class ConflictFlagController{
                return ser.addFlag(flag);
           }
      @GetMapping("/case/{caseId}")
-        public List<ConflictCase>getFlagsByCase(@PathVariable Long caseId){
+        public List<ConflictFlag>getFlagsByCase(@PathVariable Long caseId){
               return ser.getFlagsByCase(caseId);
         }
 }

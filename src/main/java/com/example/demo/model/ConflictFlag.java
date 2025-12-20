@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 @Entity
 public class ConflictFlag
 {
-        @Id
+   @Id
    private Long id;
    private Long caseId;
    private String flagType;

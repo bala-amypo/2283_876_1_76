@@ -9,5 +9,5 @@ import com.example.demo.model.ConflictFlag;
 
 @Repository
 public interface ConflictFlagRepository extends JpaRepository <ConflictFlag,Long>{
-    
+    List<ConflictFlag> getFlagsByCase(Long caseId);
 }

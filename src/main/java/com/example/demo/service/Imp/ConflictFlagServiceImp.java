@@ -23,6 +23,6 @@ public class ConflictFlagServiceImp implements ConflictFlagService
        @Override
     public List<ConflictFlag> getFlagsByCase(Long caseId)
     {
-        return rep.findByCaseId(flag);
+        return rep.findByCaseId(caseId);
     }
 }
