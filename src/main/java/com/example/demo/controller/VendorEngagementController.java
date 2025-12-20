@@ -20,5 +20,5 @@ public class VendorEngagementController{
                return ser.addEngagement(record);
           }
     @GetMapping()
-        public 
+        public List<VendorEngagementRecord>getEngagem
 }
