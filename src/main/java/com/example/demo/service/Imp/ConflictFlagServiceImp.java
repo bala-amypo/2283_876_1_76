@@ -11,7 +11,7 @@ import com.example.demo.repository.ConflictFlagRepository;
 
 @Service
 
-public class ConflictFlageServiceImp implements ConflictFlagService
+public class ConflictFlagServiceImp implements ConflictFlagService
 {
     @Autowired
      ConflictFlagRepository rep;
