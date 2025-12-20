@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.ConflictCase;
 import com.example.demo.service.ConflictCaseService;
 import com.example.demo.repository.ConflictCaseRepository;
+import com.example.demo.repository.ConflictFlagRepository;
 
 
 @Service
