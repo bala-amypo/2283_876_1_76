@@ -14,7 +14,6 @@ public class JwtTokenProvider {
     private final SecretKey secretKey;
     private final long validityInMs;
 
-    // ✅ REQUIRED by test suite
     public JwtTokenProvider(String secret, long validityInMs) {
         this.secretKey = Keys.hmacShaKeyFor(secret.getBytes());
         this.validityInMs = validityInMs;
