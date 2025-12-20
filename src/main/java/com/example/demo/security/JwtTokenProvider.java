@@ -1,4 +1,10 @@
 package com.example.demo.security;
-public class JwtTokenProvider{
 
+import com.example.demo.security
+public class JwtTokenProvider
+{
+    public void generateToken(Userprincipal up)
+    {
+
+    }
 }
