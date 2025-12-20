@@ -21,9 +21,10 @@ public class ConflictCaseServiceImp implements ConflictCaseService
         return rep.save(conflictCase);
     }
        @Override
-    public ConflictCase updateCaseStatus(Long Id,String status)
+    public ConflictCase updateCaseStatus(Long caseId,String status)
     {
-       ConflictCase ss=findById(Id);
-       
+       ConflictCase ss=findById(caseId).orElseThrow(() -> new RuntimeException("Person not found"));;
+       ss.setStatus(status);
+       return rep.save(ss);
     }
 }
