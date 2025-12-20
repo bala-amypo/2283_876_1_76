@@ -20,5 +20,7 @@ public class VendorEngagementController{
                return ser.addEngagement(record);
           }
     @GetMapping()
-        public List<VendorEngagementRecord>getEngagem
+        public List<VendorEngagementRecord>getEngagementsByEmployee(@PathVariable employeeId){
+              return ser.getEngagementsByEmployee(employeeId);
+        }
 }

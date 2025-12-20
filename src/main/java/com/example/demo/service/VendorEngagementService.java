@@ -5,4 +5,5 @@ import java.util.*;
 public interface  VendorEngagementService
 {
      VendorEngagementRecord addEngagement( VendorEngagementRecord record);
+     List<VendorEngagementRecord>getEngagementsByEmployee( employeeId);
 }
