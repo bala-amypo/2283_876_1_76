@@ -37,7 +37,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         );
     }
 
-    @Override
     public UserPrincipal register(String username, String password, String role) {
         return new UserPrincipal(
                 username,
