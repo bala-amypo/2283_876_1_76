@@ -22,7 +22,7 @@ public class VendorEngagementRecord{
     public Long getEmployeeId() {
         return employeeId;
     }
-    public void setEmployeedId(Long employeeId) {
+    public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
     public Long getVendorId() {
