@@ -15,8 +15,8 @@ public class ConflictCaseController{
      @Autowired
     ConflictCaseService  ser;
      @PostMapping
-          public VendorEngagementRecord addEngagement(@RequestBody  VendorEngagementRecord record)
+          public ConflictCase createCase(@RequestBody  ConflictCase conflictCase)
           {
-               return ser.addEngagement(record);
+               return ser.createCase(conflictCase);
           }
 }
