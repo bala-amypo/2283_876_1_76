@@ -1,59 +1,51 @@
 package com.example.demo.security;
 
-import java.security.Key;
-import java.util.Date;
-import java.util.stream.Collectors;
+import java.io.IOException;
+import java.util.List;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.filter.OncePerRequestFilter;
 
-public class JwtTokenProvider {
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private final Key key;
-    private final long validityInMs;
+    private final JwtTokenProvider jwtTokenProvider;
 
-    // REQUIRED by tests
-    public JwtTokenProvider(String secret, long validityInMs) {
-        this.key = Keys.hmacShaKeyFor(secret.getBytes());
-        this.validityInMs = validityInMs;
+    public JwtAuthenticationFilter(JwtTokenProvider jwtTokenProvider) {
+        this.jwtTokenProvider = jwtTokenProvider;
     }
 
-    public String generateToken(Authentication authentication) {
+    @Override
+    protected void doFilterInternal(
+            HttpServletRequest request,
+            HttpServletResponse response,
+            FilterChain filterChain)
+            throws ServletException, IOException {
 
-        String authorities = authentication.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.joining(","));
+        String header = request.getHeader("Authorization");
 
-        Date now = new Date();
-        Date expiry = new Date(now.getTime() + validityInMs);
+        if (header != null && header.startsWith("Bearer ")) {
+            String token = header.substring(7);
 
-        return Jwts.builder()
-                .setSubject(authentication.getName())
-                .claim("roles", authorities)
-                .setIssuedAt(now)
-                .setExpiration(expiry)
-                .signWith(key, SignatureAlgorithm.HS256)
-                .compact();
-    }
+            if (jwtTokenProvider.validateToken(token)) {
+                String username = jwtTokenProvider.getUsername(token);
+                List<SimpleGrantedAuthority> authorities =
+                        jwtTokenProvider.getRoles(token);
 
-    public boolean validateToken(String token) {
-        try {
-            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
-            return true;
-        } catch (JwtException | IllegalArgumentException e) {
-            return false;
+                UsernamePasswordAuthenticationToken auth =
+                        new UsernamePasswordAuthenticationToken(
+                                username, null, authorities);
+
+                SecurityContextHolder.getContext().setAuthentication(auth);
+            }
         }
-    }
 
-    public String getUsername(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(key)
-                .build()
-                .parseClaimsJws(token)
-                .getBody()
-                .getSubject();
+        filterChain.doFilter(request, response);
     }
 }
