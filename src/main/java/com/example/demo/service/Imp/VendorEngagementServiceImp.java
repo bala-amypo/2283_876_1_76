@@ -32,6 +32,6 @@ public class VendorEngagementServiceImp implements VendorEngagementService
        @Override
     public List<VendorEngagementRecord>getAllEngagements()
     {
-        return rep.();
+        return rep.findAll();
     }
 }
