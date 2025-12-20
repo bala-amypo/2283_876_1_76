@@ -11,4 +11,12 @@ import com.example.demo.service.VendorEngagementService;
 @RestController
 @RequestMapping("/api/engagements")
 
-public class VendorEngagementCon
+public class VendorEngagementController{
+    @Autowired
+    VendorEngagementService  ser;
+    @PostMapping
+          public VendorEngagementRecord addEngagement(@RequestBody  VendorEngagementRecord ss)
+          {
+               return ser.addEngagement(ss);
+          }
+}
