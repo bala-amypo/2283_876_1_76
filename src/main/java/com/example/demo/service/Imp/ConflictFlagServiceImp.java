@@ -7,3 +7,17 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.ConflictFlag;
 import com.example.demo.service.ConflictFlagService;
 import com.example.demo.repository.ConflictFlagRepository;
+
+
+@Service
+
+public class ConflictFlageServiceImp implements ConflictFlagService
+{
+    @Autowired
+     ConflictFlagRepository rep;
+       @Override
+    public ConflictFlag addFlag(ConflictFlag flag)
+    {
+        return rep.save(flag);
+    }
+}
