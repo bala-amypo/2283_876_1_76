@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class VendorEngagementRecord{
     @Id
    private Long id;
-    private Long employeedId;
+    private Long employeeId;
     private Long vendorId;
     private String engagementType;
     private Double amount;
@@ -19,11 +19,11 @@ public class VendorEngagementRecord{
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getEmployeedId() {
-        return employeedId;
+    public Long getEmployeeId() {
+        return employeeId;
     }
-    public void setEmployeedId(Long employeedId) {
-        this.employeedId = employeedId;
+    public void setEmployeedId(Long employeeId) {
+        this.employeeId = employeeId;
     }
     public Long getVendorId() {
         return vendorId;
@@ -55,10 +55,10 @@ public class VendorEngagementRecord{
     public void setNotes(String notes) {
         this.notes = notes;
     }
-    public VendorEngagementRecord(Long id, Long employeedId, Long vendorId, String engagementType, Double amount,
+    public VendorEngagementRecord(Long id, Long employeeId, Long vendorId, String engagementType, Double amount,
             LocalDate engagementDate, String notes) {
         this.id = id;
-        this.employeedId = employeedId;
+        this.employeeId = employeeId;
         this.vendorId = vendorId;
         this.engagementType = engagementType;
         this.amount = amount;
