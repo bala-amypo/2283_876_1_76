@@ -13,9 +13,14 @@ import com.example.demo.repository.ConflictCaseRepository;
 
 public class ConflictCaseServiceImpl implements ConflictCaseService
 {
-    @Autowired
-     ConflictCaseRepository rep;
-       @Override
+    private ConflictCaseRepository rep;
+
+    public RelationshipDeclarationServiceImpl(ConflictCaseRepository rep)
+    {
+        this.rep = rep;
+    }
+
+    @Override
     public ConflictCase createCase(ConflictCase conflictCase)
     {
         return rep.save(conflictCase);

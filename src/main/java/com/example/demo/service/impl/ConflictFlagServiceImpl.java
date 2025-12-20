@@ -13,8 +13,15 @@ import com.example.demo.repository.ConflictFlagRepository;
 
 public class ConflictFlagServiceImpl implements ConflictFlagService
 {
-    @Autowired
-     ConflictFlagRepository rep;
+
+    
+    private ConflictFlagRepository rep;
+
+    public RelationshipDeclarationServiceImpl(ConflictFlagRepository rep)
+    {
+        this.rep = rep;
+    }
+
        @Override
     public ConflictFlag addFlag(ConflictFlag flag)
     {

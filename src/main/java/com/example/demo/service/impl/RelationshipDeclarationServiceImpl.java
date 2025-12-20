@@ -15,9 +15,9 @@ public class RelationshipDeclarationServiceImpl implements RelationshipDeclarati
 
     private RelationshipDeclarationRepository rep;
 
-    public RelationshipDeclarationServiceImpl()
+    public RelationshipDeclarationServiceImpl(RelationshipDeclarationRepository rep)
     {
-        
+        this.rep = rep;
     }
 
     @Override
