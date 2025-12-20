@@ -12,8 +12,12 @@ import com.example.demo.repository.VendorEngagementRecordRepository;
 
 public class VendorEngagementServiceImpl implements VendorEngagementService
 {
-    @Autowired
-    VendorEngagementRecordRepository rep;
+    
+    private VendorEngagementRecordRepository rep;
+
+    public VendorEngagementServiceImpl(VendorEngagementRecordRepository rep){
+        this.rep = rep;
+    }
     
     @Override
     public VendorEngagementRecord addEngagement(VendorEngagementRecord record)

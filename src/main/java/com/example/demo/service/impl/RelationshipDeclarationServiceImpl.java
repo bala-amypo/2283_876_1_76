@@ -11,8 +11,14 @@ import com.example.demo.repository.RelationshipDeclarationRepository;
 
 
 public class RelationshipDeclarationServiceImpl implements RelationshipDeclarationService{
-    @Autowired
-      RelationshipDeclarationRepository rep;
+    
+
+    private RelationshipDeclarationRepository rep;
+
+    public RelationshipDeclarationServiceImpl()
+    {
+        
+    }
 
     @Override
     public RelationshipDeclaration declareRelationship(RelationshipDeclaration ss)
