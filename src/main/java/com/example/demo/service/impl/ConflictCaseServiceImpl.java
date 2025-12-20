@@ -13,9 +13,11 @@ import com.example.demo.repository.ConflictCaseRepository;
 public class ConflictCaseServiceImpl implements ConflictCaseService
 {
     private final ConflictCaseRepository rep;
-    public ConflictCaseServiceImpl(ConflictCaseRepository rep)
-    {
+    private final ConflictFlagRepository flagRepo;
+
+    public ConflictCaseServiceImpl(ConflictCaseRepository rep,ConflictFlagRepository flagRepo) {
         this.rep = rep;
+        this.flagRepo = flagRepo;
     }
 
     @Override
