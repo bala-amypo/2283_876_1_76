@@ -28,7 +28,7 @@ public class PersonProfileController {
     
     @GetMapping("/{id}")
     public PersonProfile getById(@PathVariable Long id) {
-        return service.getById(id);
+        return service.getPersonById(id);
     }
 
 

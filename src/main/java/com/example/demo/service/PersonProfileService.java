@@ -8,7 +8,7 @@ public interface PersonProfileService {
 
     PersonProfile createPerson(PersonProfile person);
 
-    PersonProfile getById(Long id);
+    PersonProfile getPersonById(Long id);
 
     List<PersonProfile> getAllPersons();
 
