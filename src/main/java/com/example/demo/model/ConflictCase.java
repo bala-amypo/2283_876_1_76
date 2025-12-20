@@ -1,9 +1,9 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-
+@Entity
 public class ConflictCase 
 {
     @Id
