@@ -19,24 +19,27 @@ public class PersonProfileController {
         this.service = service;
     }
 
-    @PostMapping
-    public ResponseEntity<PersonProfile> create(@RequestBody PersonProfile p) {
-        return ResponseEntity.ok(service.createPerson(p));
-    }
-
-   @GetMapping("/{id}")
-public ResponseEntity<PersonProfile> getById(@PathVariable Long id) {
-    return ResponseEntity.ok(service.getPersonById(id));
+ @PostMapping
+public PersonProfile create(@RequestBody PersonProfile p) {
+    return service.createPerson(p);
 }
 
-    @GetMapping
-    public ResponseEntity<List<PersonProfile>> getAll() {
-        return ResponseEntity.ok(service.getAllPersons());
-    }
+
+@GetMapping("/{id}")
+public Optional<PersonProfile> getById(@PathVariable Long id) {
+    return Optional.of(service.getPersonById(id));
+}
+
+  @GetMapping
+public List<PersonProfile> getAll() {
+    return service.getAllPersons();
+}
+
 @GetMapping("/lookup/{refId}")
-public ResponseEntity<PersonProfile> lookup(@PathVariable String refId) {
-    return ResponseEntity.ok(service.findByReferenceId(refId));
+public Optional<PersonProfile> lookup(@PathVariable String refId) {
+    return Optional.of(service.findByReferenceId(refId));
 }
+
    @PutMapping("/{id}/relationship")
     public PersonProfile toggleRelationshipDeclared(
         @PathVariable Long id,
