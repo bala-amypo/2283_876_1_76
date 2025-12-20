@@ -20,4 +20,8 @@ public class ConflictFlagController{
           {
                return ser.addFlag(flag);
           }
+     @GetMapping("/case/{caseId}")
+        public List<ConflictCase>getFlags(@PathVariable Long personId){
+              return ser.getCasesByPerson(personId);
+        }
 }
