@@ -31,4 +31,9 @@ public class ConflictCaseServiceImp implements ConflictCaseService
     public List<ConflictCase> getCasesByPerson(Long personId) {
         return rep.findByPrimaryPersonIdOrSecondaryPersonId(personId, personId);
     }
+       @Override
+    public List<ConflictCase>getCasesById(Long id)
+    {
+        return rep.findById();
+    }
 }
