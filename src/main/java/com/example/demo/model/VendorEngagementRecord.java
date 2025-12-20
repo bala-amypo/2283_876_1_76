@@ -1,8 +1,9 @@
 package com.example.demo.model;
 
 import java.time.LocalDate;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
 public class VendorEngagementRecord{
     @Id
    private Long id;
