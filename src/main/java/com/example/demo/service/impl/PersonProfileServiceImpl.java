@@ -24,10 +24,10 @@ public class PersonProfileServiceImpl implements PersonProfileService{
         return rep.save(ss);
     }
    @Override
-public PersonProfile getPersonById(Long id) {
-    return rep.findById(id)
-              .orElseThrow(() -> new ApiException("person not found"));
-}
+    public Optional<PersonProfile> getPersonById(Long id) {
+        return rep.findById(id);
+    }
+
 
     @Override
     public List<PersonProfile> getAllPersons()

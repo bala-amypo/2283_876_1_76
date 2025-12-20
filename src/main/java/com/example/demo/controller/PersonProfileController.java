@@ -20,8 +20,11 @@ import com.example.demo.service.PersonProfileService;
 @RestController
 @RequestMapping("/api/persons")
 public class PersonProfileController{
-     @Autowired
-    PersonProfileService ser;
+    @Autowired
+    private PersonProfileService ser;
+
+    public PersonProfileController() {
+    }
    @PostMapping
    public PersonProfile createPerson(@RequestBody PersonProfile ss)
    {
