@@ -9,3 +9,15 @@ import com.example.demo.model.ConflictFlag;
 import com.example.demo.service.ConflictFlagService;
 
 
+@RestController
+@RequestMapping("/api/conflict-flags")
+
+public class ConflictFlagController{
+     @Autowired
+    ConflictFlagService  ser;
+     @PostMapping
+     public ConflictCase createCase(@RequestBody  ConflictCase conflictCase)
+          {
+               return ser.createCase(conflictCase);
+          }
+}
