@@ -23,7 +23,8 @@ public class ConflictCaseServiceImpl implements ConflictCaseService
     {
         return rep.save(conflictCase);
     }
-       @Override
+    
+    @Override
     public ConflictCase updateCaseStatus(Long caseId,String status)
     {
        ConflictCase ss=rep.findById(caseId).orElseThrow(() -> new RuntimeException("Person not found"));

@@ -14,9 +14,9 @@ import com.example.demo.repository.PersonProfileRepository;
 public class PersonProfileServiceImpl implements PersonProfileService{
    private final PersonProfileRepository rep;
 
-public PersonProfileServiceImpl(PersonProfileRepository rep) {
-    this.rep = rep;
-}
+    public PersonProfileServiceImpl(PersonProfileRepository rep) {
+        this.rep = rep;
+    }
 
     @Override
     public PersonProfile createPerson(PersonProfile ss)
