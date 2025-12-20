@@ -20,25 +20,23 @@ public class JwtTokenProvider {
     }
 
     public String generateToken(Authentication authentication) {
-        String username = authentication.getName();
-        List<String> roles = authentication.getAuthorities()
-                .stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toList());
+    UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
 
-        Claims claims = Jwts.claims().setSubject(username);
-        claims.put("roles", roles);
+    Date now = new Date();
+    Date expiry = new Date(now.getTime() + validityInMs);
 
-        Date now = new Date();
-        Date expiry = new Date(now.getTime() + validityInMs);
+    return Jwts.builder()
+            .setSubject(principal.getUsername())
+            .claim("roles", principal.getAuthorities()
+                    .stream()
+                    .map(GrantedAuthority::getAuthority)
+                    .toList())
+            .setIssuedAt(now)
+            .setExpiration(expiry)
+            .signWith(key, SignatureAlgorithm.HS256)
+            .compact();
+}
 
-        return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(now)
-                .setExpiration(expiry)
-                .signWith(secretKey, SignatureAlgorithm.HS256)
-                .compact();
-    }
 
     public boolean validateToken(String token) {
         try {
