@@ -29,4 +29,9 @@ public class VendorEngagementServiceImp implements VendorEngagementService
     {
         return rep.findByVendorId(vendorId);
     }
+       @Override
+    public List<VendorEngagementRecord>getAllEngagements()
+    {
+        return rep.();
+    }
 }

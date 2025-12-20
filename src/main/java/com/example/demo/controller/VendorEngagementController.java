@@ -27,5 +27,9 @@ public class VendorEngagementController{
         public List<VendorEngagementRecord>getEngagementsByVendor(@PathVariable Long vendorId){
               return ser.getEngagementsByVendor(vendorId);
         }
+    @GetMapping
+        public List<VendorEngagementRecord>getAllEngagements(){
+              return ser.getAllEngagements();
+        }
 
 }
