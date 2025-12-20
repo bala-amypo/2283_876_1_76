@@ -1,51 +1,50 @@
 package com.example.demo.security;
 
-import java.io.IOException;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.crypto.SecretKey;
 
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.stereotype.Component;
 
-public class JwtAuthenticationFilter extends OncePerRequestFilter {
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 
-    private final JwtTokenProvider jwtTokenProvider;
+@Component
+public class JwtTokenProvider {
 
-    public JwtAuthenticationFilter(JwtTokenProvider jwtTokenProvider) {
-        this.jwtTokenProvider = jwtTokenProvider;
+    private final SecretKey key =
+            Keys.hmacShaKeyFor("my-secret-key-my-secret-key-12345".getBytes());
+
+    public String getUsername(String token) {
+        return getClaims(token).getSubject();
     }
 
-    @Override
-    protected void doFilterInternal(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            FilterChain filterChain)
-            throws ServletException, IOException {
+    public List<SimpleGrantedAuthority> getRoles(String token) {
+        List<String> roles = getClaims(token).get("roles", List.class);
 
-        String header = request.getHeader("Authorization");
+        return roles.stream()
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+    }
 
-        if (header != null && header.startsWith("Bearer ")) {
-            String token = header.substring(7);
-
-            if (jwtTokenProvider.validateToken(token)) {
-                String username = jwtTokenProvider.getUsername(token);
-                List<SimpleGrantedAuthority> authorities =
-                        jwtTokenProvider.getRoles(token);
-
-                UsernamePasswordAuthenticationToken auth =
-                        new UsernamePasswordAuthenticationToken(
-                                username, null, authorities);
-
-                SecurityContextHolder.getContext().setAuthentication(auth);
-            }
+    public boolean validateToken(String token) {
+        try {
+            getClaims(token);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
+    }
 
-        filterChain.doFilter(request, response);
+    private Claims getClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
     }
 }

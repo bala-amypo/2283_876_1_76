@@ -36,11 +36,11 @@ public class PersonProfileServiceImpl implements PersonProfileService {
 
     @Override
     public PersonProfile updateRelationshipDeclared(Long id, boolean declared) {
-        PersonProfile person = rep.findById(id)
+        PersonProfile person = repo.findById(id)
                 .orElseThrow(() -> new ApiException("person not found"));
 
         person.setRelationshipDeclared(declared);
-        return rep.save(person);
+        return repo.save(person);
     }
 
 
