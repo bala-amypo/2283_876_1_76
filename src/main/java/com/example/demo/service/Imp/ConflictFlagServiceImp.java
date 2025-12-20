@@ -20,4 +20,9 @@ public class ConflictFlagServiceImp implements ConflictFlagService
     {
         return rep.save(flag);
     }
+       @Override
+    public List<ConflictFlag> getFlagsByCase(Long caseId)
+    {
+        return rep.findByCaseId(flag);
+    }
 }
