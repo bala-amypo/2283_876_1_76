@@ -1,4 +1,4 @@
-package com.example.demo.service.Imp;
+package com.example.demo.service.impl;
 
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +11,10 @@ import com.example.demo.repository.PersonProfileRepository;
 
 @Service
 
-public class PersonProfileServiceimp implements PersonProfileService{
+public class PersonProfileServiceImpl implements PersonProfileService{
    private final PersonProfileRepository rep;
 
-public PersonProfileServiceimp(PersonProfileRepository rep) {
+public PersonProfileServiceImpl(PersonProfileRepository rep) {
     this.rep = rep;
 }
 

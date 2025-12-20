@@ -1,4 +1,4 @@
-package com.example.demo.service.Imp;
+package com.example.demo.service.impl;
 
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import com.example.demo.repository.RelationshipDeclarationRepository;
 @Service
 
 
-public class RelationshipDeclarationServiceimp implements RelationshipDeclarationService{
+public class RelationshipDeclarationServiceImpl implements RelationshipDeclarationService{
     @Autowired
       RelationshipDeclarationRepository rep;
 

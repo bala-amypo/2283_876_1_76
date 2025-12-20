@@ -1,4 +1,4 @@
-package com.example.demo.service.Imp;
+package com.example.demo.service.impl;
 
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import com.example.demo.repository.ConflictCaseRepository;
 
 @Service
 
-public class ConflictCaseServiceImp implements ConflictCaseService
+public class ConflictCaseServiceImpl implements ConflictCaseService
 {
     @Autowired
      ConflictCaseRepository rep;
