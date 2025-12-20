@@ -7,7 +7,7 @@ import com.example.demo.model.RelationshipDeclaration;
 import com.example.demo.service.RelationshipDeclarationService;
 
 import com.example.demo.repository.RelationshipDeclarationRepository;
-import com.example.demo.repository.RelationshipDeclarationRepository;
+import com.example.demo.repository.PersonProfileRepository; 
 @Service
 
 
@@ -15,8 +15,9 @@ public class RelationshipDeclarationServiceImpl implements RelationshipDeclarati
     
 
     private final RelationshipDeclarationRepository rep;
+    private final PersonProfileRepository presrep;
 
-    public RelationshipDeclarationServiceImpl(RelationshipDeclarationRepository rep)
+    public RelationshipDeclarationServiceImpl(RelationshipDeclarationRepository rep,PersonProfileRepository persrep)
     {
         this.rep = rep;
     }
