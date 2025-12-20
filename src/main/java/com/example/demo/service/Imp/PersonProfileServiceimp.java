@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.model.PersonProfile;
 import com.example.demo.service.PersonProfileService;
+import com.example.demo.exception.ApiException;
+
 import com.example.demo.repository.PersonProfileRepository;
 
 @Service
@@ -21,11 +23,12 @@ public PersonProfileServiceimp(PersonProfileRepository rep) {
     {
         return rep.save(ss);
     }
-    @Override
-    public Optional<PersonProfile> getPersonById(Long id)
-    {
-        return rep.findById(id) .orElseThrow(() -> new RuntimeException("Person not found"));
-    }
+   @Override
+public PersonProfile getPersonById(Long id) {
+    return rep.findById(id)
+              .orElseThrow(() -> new ApiException("person not found"));
+}
+
     @Override
     public List<PersonProfile> getAllPersons()
     {
