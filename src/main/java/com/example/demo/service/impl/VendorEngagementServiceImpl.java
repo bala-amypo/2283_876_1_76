@@ -6,15 +6,16 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.VendorEngagementRecord;
 import com.example.demo.service.VendorEngagementService;
-import com.example.demo.repository.VendorEngagementRepository;
+import com.example.demo.repository.VendorEngagementRecordRepository;
 
 @Service
 
 public class VendorEngagementServiceImpl implements VendorEngagementService
 {
-        @Autowired
-      VendorEngagementRepository rep;
-       @Override
+    @Autowired
+    VendorEngagementRecordRepository rep;
+    
+    @Override
     public VendorEngagementRecord addEngagement(VendorEngagementRecord record)
     {
         return rep.save(record);
