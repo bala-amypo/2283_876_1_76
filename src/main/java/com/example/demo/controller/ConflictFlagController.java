@@ -16,8 +16,8 @@ public class ConflictFlagController{
      @Autowired
     ConflictFlagService  ser;
      @PostMapping
-     public ConflictCase createCase(@RequestBody  ConflictCase conflictCase)
+     public ConflictFlag addFlag(@RequestBody  ConflictFlag flag)
           {
-               return ser.createCase(conflictCase);
+               return ser.addFlag(flag);
           }
 }
