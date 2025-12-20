@@ -20,8 +20,8 @@ public class ConflictCaseController{
                return ser.createCase(conflictCase);
           }
      @PutMapping
-          public ConflictCase createCase(@RequestBody  ConflictCase conflictCase)
+          public ConflictCase updateCaseStatus(@PathVariable caseId,@RequestParam status)
           {
-               return ser.createCase(conflictCase);
+               return ser.updateCaseStatus(caseId,status);
           }
 }
