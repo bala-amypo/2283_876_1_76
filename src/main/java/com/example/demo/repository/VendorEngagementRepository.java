@@ -8,4 +8,5 @@ import com.example.demo.model.VendorEngagementRecord;
 @Repository
 public interface VendorEngagementRepository extends JpaRepository <VendorEngagementRecord,Long>{
    List<VendorEngagementRecord>findByEmployeeId(Long employeeId);
+   List<VendorEngagementRecord>findByVendorId(Long vendorId);
 }
