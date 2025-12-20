@@ -10,10 +10,10 @@ import com.example.demo.repository.PersonProfileRepository;
 @Service
 
 public class PersonProfileServiceimp implements PersonProfileService{
-   private final PersonProfileRepository repo;
+   private final PersonProfileRepository rep;
 
-public PersonProfileServiceImpl(PersonProfileRepository repo) {
-    this.repo = repo;
+public PersonProfileServiceimp(PersonProfileRepository rep) {
+    this.rep = rep;
 }
 
     @Override
@@ -24,7 +24,7 @@ public PersonProfileServiceImpl(PersonProfileRepository repo) {
     @Override
     public Optional<PersonProfile> getPersonById(Long id)
     {
-        return rep.findById(id) .orElseThrow(() -> new ApiException("person not found"));
+        return rep.findById(id) .orElseThrow(() -> new RuntimeException("Person not found"));
     }
     @Override
     public List<PersonProfile> getAllPersons()
