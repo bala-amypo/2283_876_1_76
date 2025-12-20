@@ -32,8 +32,4 @@ public class CustomUserDetailsService implements UserDetailsService {
                 List.of(new SimpleGrantedAuthority("ROLE_USER"))
         );
     }
-    public UserPrincipal register(String username, String password, String role){
-
-    }
-
 }

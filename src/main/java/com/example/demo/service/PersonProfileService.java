@@ -4,7 +4,7 @@ import java.util.*;
 public interface PersonProfileService 
 {
  PersonProfile createPerson(PersonProfile ss);   
- PersonProfile getPersonById(Long id);
+//  PersonProfile getPersonById(Long id);
  List<PersonProfile>getAllPersons();
  PersonProfile updateRelationshipDeclared(Long id, Boolean declared);
  PersonProfile findByReferenceId(String referenceId);
