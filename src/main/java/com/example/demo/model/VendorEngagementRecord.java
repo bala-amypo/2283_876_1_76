@@ -1,11 +1,70 @@
 package com.example.demo.model;
 
+import java.time.LocalDate;
+import jakarta.persistence.Id;
+
 public class VendorEngagementRecord{
     @Id
-    private Long id;
+   private Long id;
     private Long employeedId;
     private Long vendorId;
     private String engagementType;
-    private Double ;
-
+    private Double amount;
+    private LocalDate engagementDate;
+    private String notes;
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public Long getEmployeedId() {
+        return employeedId;
+    }
+    public void setEmployeedId(Long employeedId) {
+        this.employeedId = employeedId;
+    }
+    public Long getVendorId() {
+        return vendorId;
+    }
+    public void setVendorId(Long vendorId) {
+        this.vendorId = vendorId;
+    }
+    public String getEngagementType() {
+        return engagementType;
+    }
+    public void setEngagementType(String engagementType) {
+        this.engagementType = engagementType;
+    }
+    public Double getAmount() {
+        return amount;
+    }
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+    public LocalDate getEngagementDate() {
+        return engagementDate;
+    }
+    public void setEngagementDate(LocalDate engagementDate) {
+        this.engagementDate = engagementDate;
+    }
+    public String getNotes() {
+        return notes;
+    }
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+    public VendorEngagementRecord(Long id, Long employeedId, Long vendorId, String engagementType, Double amount,
+            LocalDate engagementDate, String notes) {
+        this.id = id;
+        this.employeedId = employeedId;
+        this.vendorId = vendorId;
+        this.engagementType = engagementType;
+        this.amount = amount;
+        this.engagementDate = engagementDate;
+        this.notes = notes;
+    }
+    public VendorEngagementRecord() {
+    }
+    
 }
