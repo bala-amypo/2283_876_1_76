@@ -25,9 +25,10 @@ public class PersonProfileController {
     }
 
     
+    
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<PersonProfile>> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(service.getPersonById(id));
+    public PersonProfile getById(@PathVariable Long id) {
+        return service.getPersonById(id);
     }
 
 
