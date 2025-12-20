@@ -29,10 +29,10 @@ public class ConflictCaseController{
         public List<ConflictCase>getCasesByPerson(@PathVariable Long personId){
               return ser.getCasesByPerson(personId);
         }
-   @GetMapping("/{id}")
-     public ResponseEntity<ConflictCase> getCaseById(@PathVariable Long id) {
-    return ResponseEntity.ok(ser.getCaseById(id));
-          }
+@GetMapping("/{id}")
+public Optional<ConflictCase> getCaseById(@PathVariable Long id) {
+    return Optional.of(ser.getCaseById(id));
+}
 
         @GetMapping
         public List<ConflictCase>getAllCases(){
