@@ -29,7 +29,7 @@ public class ConflictCaseController{
               return ser.getCasesByPerson(personId);
         }
         @GetMapping("/{id}")
-        public List<ConflictCase>getCasesById(@PathVariable Long id){
+        public Optional<ConflictCase>getCasesById(@PathVariable Long id){
               return ser.getCasesById(id);
         }
 
