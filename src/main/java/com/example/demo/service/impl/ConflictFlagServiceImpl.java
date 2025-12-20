@@ -15,7 +15,7 @@ public class ConflictFlagServiceImpl implements ConflictFlagService
 {
 
     
-    private ConflictFlagRepository rep;
+    private final ConflictFlagRepository rep;
 
     public ConflictFlagServiceImpl(ConflictFlagRepository rep)
     {

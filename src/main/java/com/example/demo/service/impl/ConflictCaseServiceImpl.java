@@ -10,11 +10,9 @@ import com.example.demo.repository.ConflictCaseRepository;
 
 
 @Service
-
 public class ConflictCaseServiceImpl implements ConflictCaseService
 {
-    private ConflictCaseRepository rep;
-
+    private final ConflictCaseRepository rep;
     public ConflictCaseServiceImpl(ConflictCaseRepository rep)
     {
         this.rep = rep;

@@ -13,7 +13,7 @@ import com.example.demo.repository.RelationshipDeclarationRepository;
 public class RelationshipDeclarationServiceImpl implements RelationshipDeclarationService{
     
 
-    private RelationshipDeclarationRepository rep;
+    private final RelationshipDeclarationRepository rep;
 
     public RelationshipDeclarationServiceImpl(RelationshipDeclarationRepository rep)
     {

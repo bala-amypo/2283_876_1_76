@@ -13,7 +13,7 @@ import com.example.demo.repository.VendorEngagementRecordRepository;
 public class VendorEngagementServiceImpl implements VendorEngagementService
 {
     
-    private VendorEngagementRecordRepository rep;
+    private final VendorEngagementRecordRepository rep;
 
     public VendorEngagementServiceImpl(VendorEngagementRecordRepository rep){
         this.rep = rep;
