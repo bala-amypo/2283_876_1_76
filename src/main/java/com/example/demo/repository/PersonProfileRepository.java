@@ -7,4 +7,5 @@ import com.example.demo.model.PersonProfile;
 @Repository
 public interface PersonProfileRepository extends JpaRepository <PersonProfile,Long>{
     Optional<PersonProfile>findByReferenceId(String referenceId);
+    Optional<PersonProfile> findByEmail(String email);
 }
