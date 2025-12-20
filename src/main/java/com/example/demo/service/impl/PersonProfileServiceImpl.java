@@ -24,9 +24,8 @@ public class PersonProfileServiceImpl implements PersonProfileService {
     }
 
     @Override
-    public PersonProfile getPersonById(Long id) {
-        return repo.findById(id)
-                .orElseThrow(() -> new ApiException("person not found"));
+    public Optional<PersonProfile> getPersonById(Long id) {
+        return repo.findById(id);
     }
     @Override
     public PersonProfile updateRelationshipDeclared(Long id, Boolean declared) {

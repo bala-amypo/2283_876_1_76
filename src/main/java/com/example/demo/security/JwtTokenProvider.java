@@ -1,17 +1,17 @@
 package com.example.demo.security;
 
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-
-import java.security.Key;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
+import javax.crypto.SecretKey;
+
+import org.springframework.security.core.GrantedAuthority;
+
 public class JwtTokenProvider {
 
-    private final Key key;
+    private final SecretKey key;
     private final long validityInMs;
 
     public JwtTokenProvider(String secret, long validityInMs) {
@@ -19,22 +19,19 @@ public class JwtTokenProvider {
         this.validityInMs = validityInMs;
     }
 
-    public String generateToken(Authentication authentication) {
-        String username = authentication.getName();
+    // 🔴 REQUIRED BY TEST
+    public String generateToken(UserPrincipal user) {
+        Date now = new Date();
+        Date expiry = new Date(now.getTime() + validityInMs);
 
-        List<String> roles = authentication.getAuthorities()
+        List<String> roles = user.getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
 
-        Claims claims = Jwts.claims().setSubject(username);
-        claims.put("roles", roles);
-
-        Date now = new Date();
-        Date expiry = new Date(now.getTime() + validityInMs);
-
         return Jwts.builder()
-                .setClaims(claims)
+                .setSubject(user.getUsername())
+                .claim("roles", roles)
                 .setIssuedAt(now)
                 .setExpiration(expiry)
                 .signWith(key, SignatureAlgorithm.HS256)
@@ -50,7 +47,8 @@ public class JwtTokenProvider {
         }
     }
 
-    public String getUsername(String token) {
+    // 🔴 REQUIRED BY TEST
+    public String getUsernameFromToken(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
