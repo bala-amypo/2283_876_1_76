@@ -20,4 +20,10 @@ public class ConflictCaseServiceImp implements ConflictCaseService
     {
         return rep.save(conflictCase);
     }
+       @Override
+    public ConflictCase updateCaseStatus(Long Id,String status)
+    {
+       ConflictCase ss=findById(Id);
+       
+    }
 }

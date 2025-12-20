@@ -4,4 +4,5 @@ import java.util.*;
 public interface  ConflictCaseService
 {
      ConflictCase createCase( ConflictCase conflictCase);
+     ConflictCase updateCaseStatus(Long caseId,String status);
 }
