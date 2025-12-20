@@ -24,4 +24,8 @@ public class ConflictFlagController{
         public List<ConflictFlag>getFlagsByCase(@PathVariable Long caseId){
               return ser.getFlagsByCase(caseId);
         }
+         @GetMapping("/{id}")
+        public ConflictFlag getFlagById(@PathVariable Long id){
+              return ser.getFlagById(id);
+        }
 }
