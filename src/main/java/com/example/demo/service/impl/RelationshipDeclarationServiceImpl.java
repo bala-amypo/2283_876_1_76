@@ -7,6 +7,7 @@ import com.example.demo.model.RelationshipDeclaration;
 import com.example.demo.service.RelationshipDeclarationService;
 
 import com.example.demo.repository.RelationshipDeclarationRepository;
+import com.example.demo.repository.RelationshipDeclarationRepository;
 @Service
 
 
