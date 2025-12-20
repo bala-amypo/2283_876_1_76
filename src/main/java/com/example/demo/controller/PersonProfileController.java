@@ -23,13 +23,14 @@ public class PersonProfileController {
     public ResponseEntity<PersonProfile> create(@RequestBody PersonProfile p) {
         return ResponseEntity.ok(service.createPerson(p));
     }
-
-    
     
     @GetMapping("/{id}")
-    public PersonProfile getById(@PathVariable Long id) {
-        return service.getPersonById(id);
-    }
+
+    public ResponseEntity<Optional<PersonProfile>> getById(@PathVariable Long id) {
+    return ResponseEntity.ok(
+            Optional.of(service.getPersonById(id))
+    );
+}
 
 
     @GetMapping
