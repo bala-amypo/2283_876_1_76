@@ -6,6 +6,6 @@ public class VendorEngagementRecord{
     private Long employeedId;
     private Long vendorId;
     private String engagementType;
-    private double ;
+    private Double ;
 
 }
