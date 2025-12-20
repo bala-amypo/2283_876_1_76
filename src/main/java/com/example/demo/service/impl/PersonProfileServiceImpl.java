@@ -28,19 +28,19 @@ public class PersonProfileServiceImpl implements PersonProfileService {
         return repo.findById(id)
                 .orElseThrow(() -> new ApiException("person not found"));
     }
+    @Override
+    public PersonProfile updateRelationshipDeclared(Long id, Boolean declared) {
+
+        PersonProfile person = repo.findById(id)
+                .orElseThrow(() -> new ApiException("Person not found"));
+
+        person.setRelationshipDeclared(declared);
+        return repo.save(person);
+    }
 
     @Override
     public List<PersonProfile> getAllPersons() {
         return repo.findAll();
-    }
-
-    @Override
-    public PersonProfile updateRelationshipDeclared(Long id, boolean declared) {
-        PersonProfile person = repo.findById(id)
-                .orElseThrow(() -> new ApiException("person not found"));
-
-        person.setRelationshipDeclared(declared);
-        return repo.save(person);
     }
 
 
