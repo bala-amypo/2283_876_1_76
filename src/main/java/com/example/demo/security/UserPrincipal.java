@@ -34,8 +34,7 @@ public class UserPrincipal implements UserDetails, Authentication {
     public String getPassword() {
         return password;
     }
-    // private Long id = 1L;
-    @Override
+    private Long id = 1L;
     public Long getId() {
         return id;
     }
