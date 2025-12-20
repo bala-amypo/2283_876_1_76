@@ -1,47 +1,39 @@
 package com.example.demo.security;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.*;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
+@Service
 public class CustomUserDetailsService implements UserDetailsService {
-
-    private final Map<String, UserDetails> users = new ConcurrentHashMap<>();
-
-    public CustomUserDetailsService() {
-        users.put(
-                "admin",
-                new UserPrincipal(
-                        "admin",
-                        "password",
-                        List.of(new SimpleGrantedAuthority("ROLE_ADMIN"))
-                )
-        );
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
 
+        // dummy in-memory user for tests
+        List<String> roles = List.of("ROLE_USER");
+
         return new UserPrincipal(
                 username,
-                "",
-                List.of(new SimpleGrantedAuthority("ROLE_USER"))
+                "password",
+                roles.stream()
+                        .map(SimpleGrantedAuthority::new)
+                        .collect(Collectors.toList())
         );
     }
-    public void register(String username, String password, String role) {
-        // test helper – no DB needed
+
+    // helper for tests
+    public UserDetails loadUser(String username, List<String> roles) {
+        return new UserPrincipal(
+                username,
+                "password",
+                roles.stream()
+                        .map(SimpleGrantedAuthority::new)
+                        .collect(Collectors.toList())
+        );
     }
-
-	public UserPrincipal login(String username, String password) {
-        return new UserPrincipal(username, List.of("ROLE_USER"));
-	}
-
-	public UserPrincipal lookup(String username) {
-        return new UserPrincipal(username, List.of("ROLE_USER"));
-	}
-
 }

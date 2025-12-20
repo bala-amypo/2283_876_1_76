@@ -24,8 +24,7 @@ public class PersonProfileController{
         this.ser = ser;
     }
 
-    public PersonProfileController() {
-    }
+
    @PostMapping
    public PersonProfile createPerson(@RequestBody PersonProfile ss)
    {
