@@ -41,8 +41,8 @@ public class ConflictCaseServiceImpl implements ConflictCaseService
     }
 
     @Override
-    public ConflictCase getCaseById(Long id) {
-        return rep.findById(id).orElseThrow();
+    public Optional<ConflictCase> getCaseById(Long id) {
+        return rep.findById(id);
     }
 
     @Override

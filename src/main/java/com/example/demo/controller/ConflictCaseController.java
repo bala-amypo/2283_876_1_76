@@ -33,10 +33,8 @@ public class ConflictCaseController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<ConflictCase>> getCaseById(@PathVariable Long id) {
-        return ResponseEntity.ok(
-                Optional.of(ser.getCaseById(id))
-        );
+    public Optional<ConflictCase> getCaseById(@PathVariable Long id) {
+        return ser.getCaseById(id);
     }
 
     @GetMapping("/person/{personId}")
