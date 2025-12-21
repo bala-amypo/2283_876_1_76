@@ -32,7 +32,7 @@ public ResponseEntity<Optional<PersonProfile>> getById(@PathVariable Long id) {
     );
 }
 @GetMapping("/lookup/{refId}")
-public ResponseEntity<Optional<PersonProfile>> lookup(@PathVariable String refId) {
+public Optional<PersonProfile> lookup(@PathVariable String refId) {
     return ResponseEntity.ok(
             Optional.of(service.findByReferenceId(refId))
     );
