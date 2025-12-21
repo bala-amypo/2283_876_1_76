@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import java.util.List;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,12 +30,15 @@ public ResponseEntity<Optional<ConflictCase>> createCase(
 }
 
 
-    @PutMapping("/{id}/status")
-    public ResponseEntity<ConflictCase> updateCaseStatus(
-            @PathVariable Long id,
-            @RequestParam String status) {
-        return ResponseEntity.ok(ser.updateCaseStatus(id, status));
-    }
+  @PutMapping("/{id}/status")
+public ResponseEntity<Optional<ConflictCase>> updateCaseStatus(
+        @PathVariable Long id,
+        @RequestParam String status) {
+
+    return ResponseEntity.ok(
+            Optional.of(ser.updateCaseStatus(id, status))
+    );
+}
 
     @GetMapping("/person/{personId}")
     public ResponseEntity<List<ConflictCase>> getCasesByPerson(
