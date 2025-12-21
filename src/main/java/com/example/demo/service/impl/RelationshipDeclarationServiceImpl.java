@@ -26,8 +26,15 @@ public class RelationshipDeclarationServiceImpl implements RelationshipDeclarati
     @Override
     public RelationshipDeclaration declareRelationship(RelationshipDeclaration ss)
     {
+        if (ss.getPersonId() == null ||
+            persrep.findById(ss.getPersonId()).isEmpty()) {
+
+            throw new ApiException("person not found");
+        }
+
         return rep.save(ss);
     }
+
     @Override
     public List<RelationshipDeclaration> getDeclarationsByPerson(Long personId)
     {
