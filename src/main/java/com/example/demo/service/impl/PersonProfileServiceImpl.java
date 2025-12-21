@@ -21,6 +21,10 @@ public class PersonProfileServiceImpl implements PersonProfileService {
     @Override
     public PersonProfile createPerson(PersonProfile person) {
 
+        if (person.getEmail() == null || person.getEmail().isBlank()) {
+            throw new ApiException("email is required");
+        }
+
         if (repo.findByEmail(person.getEmail()).isPresent()) {
             throw new ApiException("email already exists");
         }
@@ -31,6 +35,7 @@ public class PersonProfileServiceImpl implements PersonProfileService {
 
         return repo.save(person);
     }
+
 
     @Override
     public PersonProfile getPersonById(Long id) {
