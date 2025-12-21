@@ -34,10 +34,15 @@ public class PersonProfileController {
     @GetMapping("/lookup/{refId}")
     public ResponseEntity<Optional<PersonProfile>> lookup(@PathVariable String refId) {
 
-        return ResponseEntity.ok(
-                service.findByReferenceId(refId)
-        );
+        Optional<PersonProfile> person = service.findByReferenceId(refId);
+
+        if (person.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(person);
     }
+
 
     @PutMapping("/{id}/relationship")
     public ResponseEntity<PersonProfile> toggleRelationshipDeclared(
