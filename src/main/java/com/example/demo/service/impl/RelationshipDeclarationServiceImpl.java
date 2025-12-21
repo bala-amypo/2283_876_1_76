@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.RelationshipDeclaration;
 import com.example.demo.service.RelationshipDeclarationService;
 
+import com.example.demo.exception.ApiException;
+
 import com.example.demo.repository.RelationshipDeclarationRepository;
 import com.example.demo.repository.PersonProfileRepository; 
 @Service

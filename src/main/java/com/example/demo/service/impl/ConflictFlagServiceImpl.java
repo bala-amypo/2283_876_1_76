@@ -9,6 +9,8 @@ import com.example.demo.service.ConflictFlagService;
 import com.example.demo.repository.ConflictFlagRepository;
 import com.example.demo.repository.ConflictCaseRepository;
 
+import com.example.demo.exception.ApiException;
+
 
 @Service
 
@@ -28,14 +30,21 @@ public class ConflictFlagServiceImpl implements ConflictFlagService
     @Override
     public ConflictFlag addFlag(ConflictFlag flag)
     {
-        if (flag.getCaseId() == null ||
-            caseRepo.findById(flag.getCaseId()).isEmpty()) {
-
+        if (flag.getCaseId() == null) {
             throw new ApiException("conflict case not found");
+        }
+
+        ConflictCase conflictCase = caseRepo.findById(flag.getCaseId())
+                .orElseThrow(() -> new ApiException("conflict case not found"));
+
+        if ("HIGH".equalsIgnoreCase(flag.getSeverity())) {
+            conflictCase.setRiskLevel("HIGH");
+            caseRepo.save(conflictCase);
         }
 
         return rep.save(flag);
     }
+
 
     @Override
     public List<ConflictFlag> getFlagsByCase(Long caseId)

@@ -8,6 +8,7 @@ import com.example.demo.model.VendorEngagementRecord;
 import com.example.demo.service.VendorEngagementService;
 import com.example.demo.repository.VendorEngagementRecordRepository;
 import com.example.demo.repository.PersonProfileRepository;
+import com.example.demo.exception.ApiException;
 
 @Service
 

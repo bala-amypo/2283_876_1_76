@@ -9,6 +9,8 @@ import com.example.demo.service.ConflictCaseService;
 import com.example.demo.repository.ConflictCaseRepository;
 import com.example.demo.repository.ConflictFlagRepository;
 
+import com.example.demo.exception.ApiException;
+
 
 @Service
 public class ConflictCaseServiceImpl implements ConflictCaseService
