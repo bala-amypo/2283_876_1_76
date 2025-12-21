@@ -25,17 +25,20 @@ public class PersonProfileController {
     public ResponseEntity<List<PersonProfile>> getAll() {
         return ResponseEntity.ok(service.getAllPersons());
     }
-@GetMapping("/{id}")
-public ResponseEntity<Optional<PersonProfile>> getById(@PathVariable Long id) {
-    return ResponseEntity.ok(
-            Optional.of(service.getPersonById(id))
-    );
-}
-@GetMapping("/lookup/{refId}")
-public Optional<PersonProfile> lookup(@PathVariable String refId) {
-    return service.findByReferenceId(refId);
-    
-}
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<PersonProfile>> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(
+                Optional.of(service.getPersonById(id))
+        );
+    }
+    @GetMapping("/lookup/{refId}")
+    public ResponseEntity<Optional<PersonProfile>> lookup(@PathVariable String refId) {
+
+        return ResponseEntity.ok(
+                service.findByReferenceId(refId)
+        );
+    }
+
     @PutMapping("/{id}/relationship")
     public ResponseEntity<PersonProfile> toggleRelationshipDeclared(
             @PathVariable Long id,
