@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import java.util.List;
+import java.util.*;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,33 +19,30 @@ public class PersonProfileController {
     }
 
     @PostMapping
-    public ResponseEntity<PersonProfile> create(@RequestBody PersonProfile p) {
-        return ResponseEntity.ok(p);
+    public PersonProfile create(@RequestBody PersonProfile p) {
+        return service.createPerson(p);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PersonProfile> getById(@PathVariable Long id) {
-        PersonProfile person = service.getPersonById(id);
-        return ResponseEntity.ok(person);
+    public Optional<PersonProfile> getById(@PathVariable Long id) {
+        return Optional.of(service.getPersonById(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<PersonProfile>> getAll() {
-        return ResponseEntity.ok(service.getAllPersons());
+    public List<PersonProfile> getAll() {
+        return service.getAllPersons();
     }
 
     @GetMapping("/lookup/{refId}")
-    public ResponseEntity<PersonProfile> lookup(@PathVariable String refId) {
-        return ResponseEntity.ok(service.findByReferenceId(refId));
+    public Optional<PersonProfile> lookup(@PathVariable String refId) {
+        return Optional.of(service.findByReferenceId(refId));
     }
 
     @PutMapping("/{id}/relationship")
-    public ResponseEntity<PersonProfile> toggleRelationshipDeclared(
+    public PersonProfile toggleRelationshipDeclared(
             @PathVariable Long id,
             @RequestParam boolean declared) {
 
-        return ResponseEntity.ok(
-                service.updateRelationshipDeclared(id, declared)
-        );
+        return service.updateRelationshipDeclared(id, declared);
     }
 }
