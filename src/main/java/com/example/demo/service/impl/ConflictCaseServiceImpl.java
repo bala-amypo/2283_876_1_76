@@ -28,12 +28,15 @@ public class ConflictCaseServiceImpl implements ConflictCaseService
     }
 
     @Override
-    public ConflictCase updateCaseStatus(Long caseId,String status)
-    {
-       ConflictCase ss=rep.findById(caseId).orElseThrow(() -> new RuntimeException("Person not found"));
-       ss.setStatus(status);
-       return rep.save(ss);
+    public ConflictCase updateCaseStatus(Long caseId, String status) {
+
+        ConflictCase ss = rep.findById(caseId)
+                .orElseThrow(() -> new ApiException("case not found"));
+
+        ss.setStatus(status);
+        return rep.save(ss);
     }
+
 
     @Override
     public List<ConflictCase> getCasesByPerson(Long personId) {

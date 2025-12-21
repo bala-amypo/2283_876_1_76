@@ -28,8 +28,15 @@ public class ConflictFlagServiceImpl implements ConflictFlagService
     @Override
     public ConflictFlag addFlag(ConflictFlag flag)
     {
+        if (flag.getCaseId() == null ||
+            caseRepo.findById(flag.getCaseId()).isEmpty()) {
+
+            throw new ApiException("conflict case not found");
+        }
+
         return rep.save(flag);
     }
+
     @Override
     public List<ConflictFlag> getFlagsByCase(Long caseId)
     {
