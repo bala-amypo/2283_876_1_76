@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.model.ConflictCase;
 import com.example.demo.service.ConflictCaseService;
-
 @RestController
 @RequestMapping("/api/conflict-cases")
 public class ConflictCaseController {
@@ -18,38 +17,30 @@ public class ConflictCaseController {
         this.ser = ser;
     }
 
-  @PostMapping
-public ResponseEntity<Optional<ConflictCase>> createCase(
-        @RequestBody ConflictCase conflictCase) {
+    // FIX 1: Removed Optional from return type and body
+    @PostMapping
+    public ResponseEntity<ConflictCase> createCase(@RequestBody ConflictCase conflictCase) {
+        return ResponseEntity.ok(ser.createCase(conflictCase));
+    }
 
-    return ResponseEntity.ok(
-            Optional.of(ser.createCase(conflictCase))
-    );
-}
-
-
-  @PutMapping("/{id}/status")
-public ResponseEntity<Optional<ConflictCase>> updateCaseStatus(
-        @PathVariable Long id,
-        @RequestParam String status) {
-
-    return ResponseEntity.ok(
-            Optional.of(ser.updateCaseStatus(id, status))
-    );
-}
+    // FIX 2: Removed Optional from return type and body
+    @PutMapping("/{id}/status")
+    public ResponseEntity<ConflictCase> updateCaseStatus(
+            @PathVariable Long id,
+            @RequestParam String status) {
+        return ResponseEntity.ok(ser.updateCaseStatus(id, status));
+    }
 
     @GetMapping("/person/{personId}")
-    public ResponseEntity<List<ConflictCase>> getCasesByPerson(
-            @PathVariable Long personId) {
+    public ResponseEntity<List<ConflictCase>> getCasesByPerson(@PathVariable Long personId) {
         return ResponseEntity.ok(ser.getCasesByPerson(personId));
     }
 
-   @GetMapping("/{id}")
-public ResponseEntity<Optional<ConflictCase>> getCaseById(@PathVariable Long id) {
-    return ResponseEntity.ok(
-            Optional.of(ser.getCaseById(id))
-    );
-}
+    // FIX 3: Removed Optional from return type and body
+    @GetMapping("/{id}")
+    public ResponseEntity<ConflictCase> getCaseById(@PathVariable Long id) {
+        return ResponseEntity.ok(ser.getCaseById(id));
+    }
 
     @GetMapping
     public ResponseEntity<List<ConflictCase>> getAllCases() {
