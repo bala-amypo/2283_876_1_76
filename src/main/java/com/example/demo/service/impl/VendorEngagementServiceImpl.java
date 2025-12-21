@@ -25,8 +25,15 @@ public class VendorEngagementServiceImpl implements VendorEngagementService
     @Override
     public VendorEngagementRecord addEngagement(VendorEngagementRecord record)
     {
+        if (record.getEmployeeId() == null ||
+            persrep.findById(record.getEmployeeId()).isEmpty()) {
+
+            throw new ApiException("employee not found");
+        }
+
         return rep.save(record);
     }
+
        @Override
     public List<VendorEngagementRecord>getEngagementsByEmployee(Long employeeId)
     {

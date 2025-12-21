@@ -34,12 +34,15 @@ public class RelationshipDeclarationServiceImpl implements RelationshipDeclarati
         return rep.findByPersonId(personId); 
     }
     @Override
-    public RelationshipDeclaration verifyDeclaration(Long id,Boolean Verified)
+    public RelationshipDeclaration verifyDeclaration(Long id, Boolean verified)
     {
-         RelationshipDeclaration ss=rep.findById(id).orElseThrow(() -> new RuntimeException("Person not found"));
-         ss.setIsVerified(Verified);
-         return rep.save(ss);
+        RelationshipDeclaration ss = rep.findById(id)
+                .orElseThrow(() -> new ApiException("declaration not found"));
+
+        ss.setIsVerified(verified);
+        return rep.save(ss);
     }
+
      @Override
     public List<RelationshipDeclaration> getAllDeclarations()
     {
