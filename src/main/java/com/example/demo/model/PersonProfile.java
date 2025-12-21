@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Entity
 public class PersonProfile{
     @Id
-    private long id;
+    private Long id;
     private String personType;
     @Column(unique=true)
     private String referenceId;
@@ -16,10 +16,10 @@ public class PersonProfile{
     private Boolean relationshipDeclared=false;
     private  LocalDateTime createdAt;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getPersonType() {
@@ -64,7 +64,7 @@ public class PersonProfile{
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
-    public PersonProfile(long id, String personType, String referenceId, String fullName, String email, String department,
+    public PersonProfile(Long id, String personType, String referenceId, String fullName, String email, String department,
             Boolean relationshipDeclared, LocalDateTime createdAt) {
                 this.id=id;
         this.personType = personType;
