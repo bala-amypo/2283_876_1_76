@@ -1,27 +1,37 @@
-package com.example.demo.security;
+package com.example.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+
+import com.example.demo.security.JwtTokenProvider;
 
 @Configuration
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(
-            HttpSecurity http,
-            JwtTokenProvider jwtTokenProvider) throws Exception {
+    public JwtTokenProvider jwtTokenProvider() {
+        return new JwtTokenProvider(
+                "very-long-secret-key-for-tests-1234567890",
+                3600000L   // 1 hour
+        );
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http,
+                                           JwtTokenProvider jwtTokenProvider)
+            throws Exception {
 
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                    "/auth/**",
+                    "/swagger-ui/**",
+                    "/v3/api-docs/**"
+                ).permitAll()
                 .anyRequest().authenticated()
-            )
-            .addFilterBefore(
-                new JwtAuthenticationFilter(jwtTokenProvider),
-                UsernamePasswordAuthenticationFilter.class
             );
 
         return http.build();
