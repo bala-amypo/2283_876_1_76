@@ -18,10 +18,10 @@ public class PersonProfileController {
         this.service = service;
     }
 
-    @PostMapping
-    public ResponseEntity<PersonProfile> create(@RequestBody PersonProfile p) {
-        return ResponseEntity.ok(p);
-    }
+   @PostMapping
+public ResponseEntity<PersonProfile> create(@RequestBody PersonProfile p) {
+    return ResponseEntity.ok(service.createPerson(p));
+}
 
     @GetMapping("/{id}")
     public ResponseEntity<PersonProfile> getById(@PathVariable Long id) {
