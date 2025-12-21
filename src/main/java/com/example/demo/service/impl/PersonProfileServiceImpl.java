@@ -51,8 +51,7 @@ public class PersonProfileServiceImpl implements PersonProfileService {
 }
 
     @Override
-    public PersonProfile findByReferenceId(String referenceId) {
-        return repo.findByReferenceId(referenceId)
-                .orElseThrow(() -> new ApiException("person not found"));
+    public Optional<PersonProfile> findByReferenceId(String referenceId) {
+        return repo.findByReferenceId(referenceId);
     }
 }

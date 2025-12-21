@@ -33,9 +33,8 @@ public ResponseEntity<Optional<PersonProfile>> getById(@PathVariable Long id) {
 }
 @GetMapping("/lookup/{refId}")
 public Optional<PersonProfile> lookup(@PathVariable String refId) {
-    return ResponseEntity.ok(
-            Optional.of(service.findByReferenceId(refId))
-    );
+    return service.findByReferenceId(refId);
+    
 }
     @PutMapping("/{id}/relationship")
     public ResponseEntity<PersonProfile> toggleRelationshipDeclared(
