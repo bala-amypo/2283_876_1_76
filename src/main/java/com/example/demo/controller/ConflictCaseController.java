@@ -20,11 +20,15 @@ public class ConflictCaseController {
         this.ser = ser;
     }
 
-    @PostMapping
-    public ResponseEntity<ConflictCase> createCase(
-            @RequestBody ConflictCase conflictCase) {
-        return ResponseEntity.ok(ser.createCase(conflictCase));
-    }
+  @PostMapping
+public ResponseEntity<Optional<ConflictCase>> createCase(
+        @RequestBody ConflictCase conflictCase) {
+
+    return ResponseEntity.ok(
+            Optional.of(ser.createCase(conflictCase))
+    );
+}
+
 
     @PutMapping("/{id}/status")
     public ResponseEntity<ConflictCase> updateCaseStatus(
@@ -39,10 +43,12 @@ public class ConflictCaseController {
         return ResponseEntity.ok(ser.getCasesByPerson(personId));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ConflictCase> getCaseById(@PathVariable Long id) {
-        return ResponseEntity.ok(ser.getCaseById(id));
-    }
+   @GetMapping("/{id}")
+public ResponseEntity<Optional<ConflictCase>> getCaseById(@PathVariable Long id) {
+    return ResponseEntity.ok(
+            Optional.of(ser.getCaseById(id))
+    );
+}
 
     @GetMapping
     public ResponseEntity<List<ConflictCase>> getAllCases() {
