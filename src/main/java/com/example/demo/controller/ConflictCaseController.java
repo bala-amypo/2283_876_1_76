@@ -17,20 +17,41 @@ public class ConflictCaseController {
         this.ser = ser;
     }
 
-    // FIX 1: Removed Optional from return type and body
+    // // FIX 1: Removed Optional from return type and body
+    // @PostMapping
+    // public ResponseEntity<ConflictCase> createCase(@RequestBody ConflictCase conflictCase) {
+    //     return ResponseEntity.ok(ser.createCase(conflictCase));
+    // }
+
+    // // FIX 2: Removed Optional from return type and body
+    // @PutMapping("/{id}/status")
+    // public ResponseEntity<ConflictCase> updateCaseStatus(
+    //         @PathVariable Long id,
+    //         @RequestParam String status) {
+    //     return ResponseEntity.ok(ser.updateCaseStatus(id, status));
+    // }
     @PostMapping
-    public ResponseEntity<ConflictCase> createCase(@RequestBody ConflictCase conflictCase) {
-        return ResponseEntity.ok(ser.createCase(conflictCase));
-    }
+public ResponseEntity<Optional<ConflictCase>> createCase(@RequestBody ConflictCase conflictCase) {
+    return ResponseEntity.ok(
+            Optional.of(ser.createCase(conflictCase))
+    );
+}
 
-    // FIX 2: Removed Optional from return type and body
-    @PutMapping("/{id}/status")
-    public ResponseEntity<ConflictCase> updateCaseStatus(
-            @PathVariable Long id,
-            @RequestParam String status) {
-        return ResponseEntity.ok(ser.updateCaseStatus(id, status));
-    }
+@PutMapping("/{id}/status")
+public ResponseEntity<Optional<ConflictCase>> updateCaseStatus(
+        @PathVariable Long id, 
+        @RequestParam String status) {
+    return ResponseEntity.ok(
+            Optional.of(ser.updateCaseStatus(id, status))
+    );
+}
 
+@GetMapping("/{id}")
+public ResponseEntity<Optional<ConflictCase>> getCaseById(@PathVariable Long id) {
+    return ResponseEntity.ok(
+            Optional.of(ser.getCaseById(id))
+    );
+}
     @GetMapping("/person/{personId}")
     public ResponseEntity<List<ConflictCase>> getCasesByPerson(@PathVariable Long personId) {
         return ResponseEntity.ok(ser.getCasesByPerson(personId));
