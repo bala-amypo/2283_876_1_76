@@ -21,25 +21,37 @@ public class PersonProfileController {
         return ResponseEntity.ok(service.createPerson(p));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Optional<PersonProfile>> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(
-                Optional.of(service.getPersonById(id))
-        );
-    }
+    // @GetMapping("/{id}")
+    // public ResponseEntity<Optional<PersonProfile>> getById(@PathVariable Long id) {
+    //     return ResponseEntity.ok(
+    //             Optional.of(service.getPersonById(id))
+    //     );
+    // }
 
     @GetMapping
     public ResponseEntity<List<PersonProfile>> getAll() {
         return ResponseEntity.ok(service.getAllPersons());
     }
 
-    @GetMapping("/lookup/{refId}")
-    public ResponseEntity<Optional<PersonProfile>> lookup(@PathVariable String refId) {
-        return ResponseEntity.ok(
-                Optional.of(service.findByReferenceId(refId))
-        );
-    }
+    // @GetMapping("/lookup/{refId}")
+    // public ResponseEntity<Optional<PersonProfile>> lookup(@PathVariable String refId) {
+    //     return ResponseEntity.ok(
+    //             Optional.of(service.findByReferenceId(refId))
+    //     );
+    // }
+// Change 1: Get by ID
+@GetMapping("/{id}")
+public ResponseEntity<PersonProfile> getById(@PathVariable Long id) {
+    // service.getPersonById(id) returns PersonProfile, not Optional
+    return ResponseEntity.ok(service.getPersonById(id));
+}
 
+// Change 2: Lookup by Reference ID
+@GetMapping("/lookup/{refId}")
+public ResponseEntity<PersonProfile> lookup(@PathVariable String refId) {
+    // service.findByReferenceId(refId) returns PersonProfile, not Optional
+    return ResponseEntity.ok(service.findByReferenceId(refId));
+}
     @PutMapping("/{id}/relationship")
     public ResponseEntity<PersonProfile> toggleRelationshipDeclared(
             @PathVariable Long id,
