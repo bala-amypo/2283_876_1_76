@@ -14,8 +14,6 @@ import com.example.demo.service.ConflictCaseService;
 public class ConflictCaseController {
 
     private final ConflictCaseService ser;
-
-    @Autowired
     public ConflictCaseController(ConflictCaseService ser) {
         this.ser = ser;
     }
