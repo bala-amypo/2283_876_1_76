@@ -18,27 +18,18 @@ public class SecurityConfig {
         );
     }
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http,
-                                           JwtTokenProvider jwtTokenProvider)
-            throws Exception {
+   @Bean
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(
-                    "/auth/**",
-                    "/swagger-ui/**",
-                    "/v3/api-docs/**",
-                    "/api/relationships/**",
-                    "/api/conflict-cases/**",
-                    "/api/conflict-flags/**",
-                    "/api/persons/**",
-                    "/api/engagements/**"
-                ).permitAll()
-                .anyRequest().authenticated()
-            );
+    http
+        .csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(auth -> auth
+            .anyRequest().permitAll()
+        )
+        .httpBasic(basic -> basic.disable())
+        .formLogin(form -> form.disable());
 
-        return http.build();
-    }
+    return http.build();
+}
+
 }
