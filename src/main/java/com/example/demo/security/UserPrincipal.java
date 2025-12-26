@@ -14,17 +14,24 @@ public class UserPrincipal implements UserDetails, Authentication {
     private final Collection<? extends GrantedAuthority> authorities;
     private boolean authenticated = true;
 
-    // ✅ SINGLE constructor (tests rely on this style)
+    // ✅ Constructor used by JwtTokenProvider / AuthServiceImpl
     public UserPrincipal(
             Long id,
             String username,
             String password,
             Collection<? extends GrantedAuthority> authorities) {
-
         this.id = id;
         this.username = username;
         this.password = password;
         this.authorities = authorities;
+    }
+
+    // ✅ Constructor used by CustomUserDetailsService (IMPORTANT)
+    public UserPrincipal(
+            String username,
+            String password,
+            Collection<? extends GrantedAuthority> authorities) {
+        this(1L, username, password, authorities);
     }
 
     /* ================= UserDetails ================= */
